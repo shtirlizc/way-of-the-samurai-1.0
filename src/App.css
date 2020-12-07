@@ -1,3 +1,50 @@
-ul li {
-  list-style-type: georgian;
+/* wrapper */
+
+.app-wrapper {
+  display: grid;
+  max-width: 1200px;
+  width: 100%;
+  min-height: 100vh;
+  margin: auto;
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-template-areas:
+    "header header"
+    "side content";
+}
+
+/* header */
+
+.app-header {
+  grid-area: header;
+  background-color: aqua;
+}
+
+.app-header img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* sidebar */
+
+.app-side {
+  grid-area: side;
+  background-color: bisque;
+}
+
+/* nav */
+
+.app-nav {
+  display: grid;
+}
+
+/* content */
+
+.app-content {
+  grid-area: content;
+  background-color: tomato;
+}
+
+.app-content .main-image img {
+  width: 100%;
 }
