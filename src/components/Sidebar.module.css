@@ -1,0 +1,18 @@
+.root {
+  grid-area: side;
+  background-color: bisque;
+}
+
+/* nav */
+
+.nav {
+  display: grid;
+}
+
+.item {
+  color: white;
+}
+
+.itemActive {
+  color: gold;
+}
