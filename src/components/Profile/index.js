@@ -14,20 +14,45 @@ const Index = () => {
       <div className={s.profile}>
         <div className={s.profileAvatar}>
           <img
-            src="https://cdn.jpegmini.com/user/images/slider_puffin_before_mobile.jpg"
+            src="https://sun9-47.userapi.com/impg/rTgw7T7n13coqYr4RBTihjxnUCwjyqdyVk7_jQ/MsfZ_BSiDGc.jpg?size=519x400&quality=96&proxy=1&sign=f1c988783fd5cce0d899203b5c958130&type=album"
             alt=""
           />
         </div>
 
-        <div className={s.profileDesc}></div>
-
-
+        <div className={s.profileDesc}>
+            <h3 className={s.profileName}>Marat S.</h3>
+            <dl className={s.profileList}>
+                <dt>Date of Birth:</dt>
+                <dd>18th April</dd>
+                <dt>City:</dt>
+                <dd>Ufa</dd>
+                <dt>Education:</dt>
+                <dd>USATU</dd>
+                <dt>Web Site:</dt>
+                <dd><a href="https://shtirlizc.ru" target="_blank" rel="noreferrer">shtirlizc.ru</a></dd>
+            </dl>
+        </div>
       </div>
       <div className={s.posts}>
-        <div className={s.postsNew}>New</div>
+        <div className={s.postsNew}>
+            <form action="" className={s.form}>
+                <textarea name="message" id="message" placeholder="Your news..." />
+                <button type="submit">Send</button>
+            </form>
+        </div>
         <div className={s.postsFeed}>
-          <div className={s.item}>Post 1</div>
-          <div className={s.item}>Post 2</div>
+          <div className={s.postItem}>
+              <div className={s.postAvatar}>
+                  <span />
+              </div>
+              <p className={s.postText}>Hi there!</p>
+          </div>
+            <div className={s.postItem}>
+                <div className={s.postAvatar}>
+                    <span />
+                </div>
+                <p className={s.postText}>It's our new program!</p>
+            </div>
         </div>
       </div>
     </>

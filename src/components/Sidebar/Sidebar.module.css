@@ -1,6 +1,7 @@
 .root {
   grid-area: side;
-  background-color: bisque;
+  background-color: tomato;
+  padding: 20px;
 }
 
 /* nav */

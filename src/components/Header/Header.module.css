@@ -1,6 +1,7 @@
 .root {
   grid-area: header;
-  background-color: aqua;
+  background-color: tomato;
+  padding: 20px;
 }
 
 .root img {
