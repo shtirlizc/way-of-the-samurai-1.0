@@ -1,6 +1,7 @@
 import React from "react";
 
 import s from "./Profile.module.css";
+import MyPosts from "./MyPosts";
 
 const Index = () => {
   return (
@@ -33,28 +34,7 @@ const Index = () => {
             </dl>
         </div>
       </div>
-      <div className={s.posts}>
-        <div className={s.postsNew}>
-            <form action="" className={s.form}>
-                <textarea name="message" id="message" placeholder="Your news..." />
-                <button type="submit">Send</button>
-            </form>
-        </div>
-        <div className={s.postsFeed}>
-          <div className={s.postItem}>
-              <div className={s.postAvatar}>
-                  <span />
-              </div>
-              <p className={s.postText}>Hi there!</p>
-          </div>
-            <div className={s.postItem}>
-                <div className={s.postAvatar}>
-                    <span />
-                </div>
-                <p className={s.postText}>It's our new program!</p>
-            </div>
-        </div>
-      </div>
+        <MyPosts />
     </>
   );
 };
