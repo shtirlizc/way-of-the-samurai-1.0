@@ -2,7 +2,7 @@ import React from "react";
 
 import s from "./Sidebar.module.css";
 
-const Sidebar = () => {
+const Index = () => {
   return (
     <aside className={s.root}>
       <nav className={s.nav}>
@@ -26,4 +26,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default Index;

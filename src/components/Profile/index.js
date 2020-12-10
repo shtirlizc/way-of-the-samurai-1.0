@@ -2,7 +2,7 @@ import React from "react";
 
 import s from "./Profile.module.css";
 
-const Profile = () => {
+const Index = () => {
   return (
     <>
       <div className={s.mainImg}>
@@ -18,7 +18,10 @@ const Profile = () => {
             alt=""
           />
         </div>
+
         <div className={s.profileDesc}></div>
+
+
       </div>
       <div className={s.posts}>
         <div className={s.postsNew}>New</div>
@@ -31,4 +34,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Index;
