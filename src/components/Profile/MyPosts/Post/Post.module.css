@@ -24,8 +24,24 @@
 
 .postText {
     margin: 0;
-    flex: 1 1 auto;
-    padding-left: 15px;
     color: #555;
     font-size: 16px;
+    margin: 0 15px;
+    flex-grow: 1;
+}
+
+.postLike {
+    flex: 0 1 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    padding-left: 15px;
+    color: #777;
+    font-size: 14px;
+}
+
+.postLike svg {
+    flex: 0 0 18px;
+    margin-left: 10px;
 }

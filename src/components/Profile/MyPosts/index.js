@@ -14,8 +14,8 @@ const MyPosts = () => {
             </div>
             <h3 className={s.postsTitle}>My posts</h3>
             <div className={s.postsFeed}>
-                <Post />
-                <Post />
+                <Post message="Hi, how are you?" likes={12} />
+                <Post message="It's, my first post" likes={8} />
             </div>
         </div>
     )
