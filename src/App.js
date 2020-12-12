@@ -1,8 +1,9 @@
 import React from "react";
 
-import Header from './components/Header';
+import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Profile from "./components/Profile";
+import Dialogs from "./components/Dialogs";
 
 import "./App.css";
 
@@ -13,7 +14,8 @@ const App = () => {
       <Sidebar />
 
       <main className="app-content">
-        <Profile />
+        {/*<Profile />*/}
+        <Dialogs />
       </main>
     </div>
   );
