@@ -1,5 +1,5 @@
 import React from "react";
-import classNames from "classnames";
+import { NavLink } from "react-router-dom";
 
 import s from "./Sidebar.module.css";
 
@@ -7,21 +7,21 @@ const Index = () => {
   return (
     <aside className={s.root}>
       <nav className={s.nav}>
-        <a className={classNames(s.item, s.itemActive)} href="/profile">
+        <NavLink className={s.item} activeClassName={s.active} to="/profile">
           Profile
-        </a>
-        <a className={s.item} href="/dialogs">
+        </NavLink>
+        <NavLink className={s.item} activeClassName={s.active} to="/dialogs">
           Messages
-        </a>
-        <a className={s.item} href="/news">
+        </NavLink>
+        <NavLink className={s.item} activeClassName={s.active} to="/news">
           News
-        </a>
-        <a className={s.item} href="/music">
+        </NavLink>
+        <NavLink className={s.item} activeClassName={s.active} to="/music">
           Music
-        </a>
-        <a className={s.item} href="/settings">
+        </NavLink>
+        <NavLink className={s.item} activeClassName={s.active} to="/settings">
           Settings
-        </a>
+        </NavLink>
       </nav>
     </aside>
   );
