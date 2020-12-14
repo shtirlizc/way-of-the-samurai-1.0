@@ -1,2 +1,21 @@
 .root {
+  display: grid;
+  grid-template-columns: 3fr 10fr;
+  gap: 20px;
+}
+
+.dialogs {
+}
+
+.dialogsItem {
+}
+
+.dialogsItemActive {
+  color: gold;
+}
+
+.messages {
+}
+
+.messageItem {
 }
