@@ -1,0 +1,12 @@
+.messageItem {
+  color: #555555;
+  font-size: 18px;
+  line-height: 1.2em;
+  padding: 5px 0;
+}
+
+.messageItem:not(:last-child) {
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #aaa;
+}

@@ -5,17 +5,10 @@
 }
 
 .dialogs {
-}
-
-.dialogsItem {
-}
-
-.dialogsItemActive {
-  color: gold;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .messages {
-}
-
-.messageItem {
 }

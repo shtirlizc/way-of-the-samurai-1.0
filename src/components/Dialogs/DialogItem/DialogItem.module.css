@@ -1,0 +1,17 @@
+.dialogsItem {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  color: gray;
+  padding: 5px 0;
+  transition: color 0.2s ease-in-out;
+}
+
+.dialogsItem:hover {
+  color: gold;
+}
+
+.dialogsItemActive {
+  color: gold;
+  cursor: default;
+}
