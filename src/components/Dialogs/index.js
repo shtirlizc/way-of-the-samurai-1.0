@@ -5,20 +5,59 @@ import Message from "./Message";
 import s from "./Dialogs.module.css";
 
 const Dialogs = () => {
+  const dialogsData = [
+    {
+      id: 1,
+      name: "Dimych",
+    },
+    {
+      id: 2,
+      name: "Andrey",
+    },
+    {
+      id: 3,
+      name: "Sveta",
+    },
+    {
+      id: 4,
+      name: "Sasha",
+    },
+    {
+      id: 5,
+      name: "Viktor",
+    },
+    {
+      id: 6,
+      name: "Valera",
+    },
+  ];
+  const messagesData = [
+    {
+      id: 1,
+      message: "Hu",
+    },
+    {
+      id: 2,
+      message: "How is your it-kamasutra?",
+    },
+    {
+      id: 3,
+      message: "Yo",
+    },
+  ];
+
   return (
     <div className={s.root}>
       <div className={s.dialogs}>
-        <DialogItem name="Dimych" id="1" />
-        <DialogItem name="Andrey" id="2" />
-        <DialogItem name="Sveta" id="3" />
-        <DialogItem name="Sasha" id="4" />
-        <DialogItem name="Viktor" id="5" />
-        <DialogItem name="Valera" id="6" />
+        {dialogsData.map(({ id, name }) => (
+          <DialogItem key={id} name={name} id={id} />
+        ))}
       </div>
+
       <div className={s.messages}>
-        <Message message="Hi" />
-        <Message message="How is your it-kamasutra?" />
-        <Message message="Yo" />
+        {messagesData.map(({ id, message }) => (
+          <Message key={{ id }} message={message} />
+        ))}
       </div>
     </div>
   );
