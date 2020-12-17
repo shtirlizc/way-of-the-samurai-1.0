@@ -4,18 +4,22 @@ import s from "./MyPosts.module.css";
 import Post from "./Post";
 
 const MyPosts = () => {
-  const postData = [
+  const posts = [
     {
       id: 1,
       message: "Hi, how are you?",
       likesCount: 12,
     },
     {
-      id: 1,
+      id: 2,
       message: "It's, my first post",
       likesCount: 11,
     },
   ];
+
+  const postsElements = posts.map(({ id, message, likesCount }) => (
+    <Post key={{ id }} message={message} likes={likesCount} />
+  ));
 
   return (
     <div className={s.posts}>
@@ -26,11 +30,7 @@ const MyPosts = () => {
         </form>
       </div>
       <h3 className={s.postsTitle}>My posts</h3>
-      <div className={s.postsFeed}>
-        {postData.map(({ id, message, likesCount }) => (
-          <Post key={{ id }} message={message} likes={likesCount} />
-        ))}
-      </div>
+      <div className={s.postsFeed}>{postsElements}</div>
     </div>
   );
 };

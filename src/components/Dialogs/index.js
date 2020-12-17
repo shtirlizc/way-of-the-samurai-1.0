@@ -5,7 +5,7 @@ import Message from "./Message";
 import s from "./Dialogs.module.css";
 
 const Dialogs = () => {
-  const dialogsData = [
+  const dialogs = [
     {
       id: 1,
       name: "Dimych",
@@ -31,7 +31,7 @@ const Dialogs = () => {
       name: "Valera",
     },
   ];
-  const messagesData = [
+  const messages = [
     {
       id: 1,
       message: "Hu",
@@ -46,19 +46,17 @@ const Dialogs = () => {
     },
   ];
 
+  const dialogsElements = dialogs.map(({ id, name }) => (
+    <DialogItem key={id} name={name} id={id} />
+  ));
+  const messagesElements = messages.map(({ id, message }) => (
+    <Message key={{ id }} message={message} />
+  ));
+
   return (
     <div className={s.root}>
-      <div className={s.dialogs}>
-        {dialogsData.map(({ id, name }) => (
-          <DialogItem key={id} name={name} id={id} />
-        ))}
-      </div>
-
-      <div className={s.messages}>
-        {messagesData.map(({ id, message }) => (
-          <Message key={{ id }} message={message} />
-        ))}
-      </div>
+      <div className={s.dialogs}>{dialogsElements}</div>
+      <div className={s.messages}>{messagesElements}</div>
     </div>
   );
 };
