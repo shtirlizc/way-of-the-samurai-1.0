@@ -11,7 +11,9 @@ import Settings from "./components/Settings";
 
 import "./App.css";
 
-const App = () => {
+const App = (props) => {
+  const { posts, dialogs, messages } = props;
+
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -19,8 +21,11 @@ const App = () => {
         <Sidebar />
 
         <main className="app-content">
-          <Route path="/profile" component={Profile} />
-          <Route path="/dialogs" component={Dialogs} />
+          <Route path="/profile" render={() => <Profile posts={posts} />} />
+          <Route
+            path="/dialogs"
+            render={() => <Dialogs dialogs={dialogs} messages={messages} />}
+          />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
           <Route path="/settings" component={Settings} />
