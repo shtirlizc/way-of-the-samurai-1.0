@@ -13,13 +13,13 @@ import "./App.css";
 
 const App = (props) => {
   const { state } = props;
-  const { profilePage, dialogsPage } = state;
+  const { profilePage, dialogsPage, sidebar } = state;
 
   return (
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Sidebar />
+        <Sidebar state={sidebar} />
 
         <main className="app-content">
           <Route

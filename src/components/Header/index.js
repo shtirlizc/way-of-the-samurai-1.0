@@ -2,7 +2,7 @@ import React from "react";
 
 import s from "./Header.module.css";
 
-const Index = () => {
+const Header = () => {
   return (
     <header className={s.root}>
       <img
@@ -13,4 +13,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Header;

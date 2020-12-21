@@ -1,30 +1,27 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import Friend from "./Friend";
+import PageLink from "./PageLink";
 
 import s from "./Sidebar.module.css";
 
-const Index = () => {
+const Sidebar = (props) => {
+  const { state } = props;
+  const { friends, navigation } = state;
+
+  const navigationElements = navigation.map(({ id, link, text }) => (
+    <PageLink key={id} id={id} link={link} text={text} />
+  ));
+  const friendsElements = friends.map(({ id, name, avatar }) => (
+    <Friend key={id} name={name} avatar={avatar} />
+  ));
+  friendsElements.length = 3;
+
   return (
     <aside className={s.root}>
-      <nav className={s.nav}>
-        <NavLink className={s.item} activeClassName={s.active} to="/profile">
-          Profile
-        </NavLink>
-        <NavLink className={s.item} activeClassName={s.active} to="/dialogs">
-          Messages
-        </NavLink>
-        <NavLink className={s.item} activeClassName={s.active} to="/news">
-          News
-        </NavLink>
-        <NavLink className={s.item} activeClassName={s.active} to="/music">
-          Music
-        </NavLink>
-        <NavLink className={s.item} activeClassName={s.active} to="/settings">
-          Settings
-        </NavLink>
-      </nav>
+      <nav className={s.nav}>{navigationElements}</nav>
+      <div className={s.friends}>{friendsElements}</div>
     </aside>
   );
 };
 
-export default Index;
+export default Sidebar;
