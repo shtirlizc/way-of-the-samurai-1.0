@@ -5,13 +5,14 @@ import Message from "./Message";
 import s from "./Dialogs.module.css";
 
 const Dialogs = (props) => {
-  const { dialogs, messages } = props;
+  const { state } = props;
+  const { dialogs, messages } = state;
 
   const dialogsElements = dialogs.map(({ id, name }) => (
     <DialogItem key={id} name={name} id={id} />
   ));
   const messagesElements = messages.map(({ id, message }) => (
-    <Message key={{ id }} message={message} />
+    <Message key={id} message={message} />
   ));
 
   return (

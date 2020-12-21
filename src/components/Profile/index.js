@@ -3,7 +3,8 @@ import MyPosts from "./MyPosts";
 import ProfileInfo from "./ProfileInfo";
 
 const Profile = (props) => {
-  const { posts } = props;
+  const { state } = props;
+  const { posts } = state;
 
   return (
     <>
