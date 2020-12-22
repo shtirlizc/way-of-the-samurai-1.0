@@ -1,18 +1,19 @@
 .root {
   grid-area: side;
   background-color: tomato;
-  padding: 20px;
   min-width: 260px;
 }
 
-/* nav */
+.content {
+  padding: 20px;
+  position: sticky;
+  top: 100px;
+}
 
 .nav {
   display: grid;
   gap: 20px;
 }
-
-/* friends */
 
 .friends {
   margin-top: 40px;

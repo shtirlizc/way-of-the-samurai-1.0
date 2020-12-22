@@ -18,8 +18,10 @@ const Sidebar = (props) => {
 
   return (
     <aside className={s.root}>
-      <nav className={s.nav}>{navigationElements}</nav>
-      <div className={s.friends}>{friendsElements}</div>
+      <div className={s.content}>
+        <nav className={s.nav}>{navigationElements}</nav>
+        <div className={s.friends}>{friendsElements}</div>
+      </div>
     </aside>
   );
 };
