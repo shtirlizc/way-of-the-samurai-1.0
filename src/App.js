@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import Profile from "./components/Profile";
-import Dialogs from "./components/Dialogs";
-import News from "./components/News";
-import Music from "./components/Music";
-import Settings from "./components/Settings";
+import Header from "./modules/Header";
+import Sidebar from "./modules/Sidebar";
+import Profile from "./pages/Profile";
+import Dialogs from "./pages/Dialogs";
+import News from "./pages/News";
+import Music from "./pages/Music";
+import Settings from "./pages/Settings";
 
 import "./App.css";
 

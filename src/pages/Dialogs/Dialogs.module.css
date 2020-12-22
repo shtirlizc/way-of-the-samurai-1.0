@@ -9,10 +9,3 @@
   flex-direction: column;
   gap: 10px;
 }
-
-.messages {
-}
-
-.newMessage {
-  margin-top: 30px;
-}

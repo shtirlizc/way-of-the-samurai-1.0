@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import Post from "./Post";
-import Textarea from "../../Textarea";
-import Button from "../../Button";
+import Textarea from "../../../components/Textarea";
+import Button from "../../../components/Button";
 
 import s from "./MyPosts.module.css";
 
