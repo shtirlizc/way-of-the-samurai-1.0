@@ -12,7 +12,7 @@ import Settings from "./pages/Settings";
 import "./App.css";
 
 const App = (props) => {
-  const { state } = props;
+  const { state, addPost } = props;
   const { profilePage, dialogsPage, sidebar } = state;
 
   return (
@@ -24,7 +24,7 @@ const App = (props) => {
         <main className="app-content">
           <Route
             path="/profile"
-            render={() => <Profile state={profilePage} />}
+            render={() => <Profile state={profilePage} addPost={addPost} />}
           />
           <Route
             path="/dialogs"

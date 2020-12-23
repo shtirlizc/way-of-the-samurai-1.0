@@ -6,15 +6,15 @@ import Button from "../../../components/Button";
 import s from "./MyPosts.module.css";
 
 const MyPosts = (props) => {
-  const { posts } = props;
+  const { posts, addPost } = props;
   const postsElements = posts.map(({ id, message, likesCount }) => (
     <Post key={id} message={message} likes={likesCount} />
   ));
 
   const textareaRef = useRef(null);
 
-  const addPost = () => {
-    console.log(textareaRef.current.value);
+  const newPost = () => {
+    addPost(textareaRef.current.value);
   };
 
   return (
@@ -22,7 +22,7 @@ const MyPosts = (props) => {
       <div className={s.postsNew}>
         <form action="" className={s.form}>
           <Textarea ref={textareaRef} placeholder="Your news..." required />
-          <Button type="button" onClick={addPost}>
+          <Button type="button" onClick={newPost}>
             Send
           </Button>
         </form>
