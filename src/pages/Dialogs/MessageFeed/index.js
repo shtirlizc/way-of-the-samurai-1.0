@@ -13,7 +13,8 @@ const MessageFeed = (props) => {
   ));
   const textareaRef = useRef(null);
 
-  const addMessage = () => {
+  const addMessage = (evt) => {
+    evt.preventDefault();
     console.log(textareaRef.current.value);
   };
 
@@ -21,11 +22,9 @@ const MessageFeed = (props) => {
     <div className={s.root}>
       {messagesElements}
 
-      <form action="" className={s.newMessage}>
+      <form action="" className={s.newMessage} onSubmit={addMessage}>
         <Textarea ref={textareaRef} placeholder="Type message..." required />
-        <Button type="button" onClick={addMessage}>
-          Send
-        </Button>
+        <Button type="submit">Send</Button>
       </form>
     </div>
   );

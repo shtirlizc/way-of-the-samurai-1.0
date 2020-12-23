@@ -44,6 +44,7 @@ const friends = [
 
 const state = {
   profilePage: {
+    currentPost: "",
     posts: [
       {
         id: 1,
@@ -116,12 +117,18 @@ const state = {
 
 export default state;
 
-export const addPost = (message) => {
+export function addPost(message) {
   state.profilePage.posts.push({
     id: 5,
     message,
     likesCount: 0,
   });
 
-  rerenderAllTree(state, addPost);
-};
+  rerenderAllTree(state, addPost, changePostCurrentValue);
+}
+
+export function changePostCurrentValue(value) {
+  state.profilePage.currentPost = value;
+
+  rerenderAllTree(state, addPost, changePostCurrentValue);
+}
