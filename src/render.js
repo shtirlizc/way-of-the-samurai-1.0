@@ -4,13 +4,21 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-export const rerenderAllTree = (state, addPost, changePostCurrentValue) => {
+export const rerenderAllTree = (
+  state,
+  changePostCurrentValue,
+  addPost,
+  changeMessage,
+  addMessage
+) => {
   ReactDOM.render(
     <React.StrictMode>
       <App
         state={state}
-        addPost={addPost}
         changePostCurrentValue={changePostCurrentValue}
+        addPost={addPost}
+        changeMessage={changeMessage}
+        addMessage={addMessage}
       />
     </React.StrictMode>,
     document.getElementById("root")

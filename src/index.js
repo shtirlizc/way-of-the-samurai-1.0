@@ -1,4 +1,15 @@
 import { rerenderAllTree } from "./render";
-import state, { addPost, changePostCurrentValue } from "./redux/state";
+import state, {
+  changePostCurrentValue,
+  addPost,
+  changeMessage,
+  addMessage,
+} from "./redux/state";
 
-rerenderAllTree(state, addPost, changePostCurrentValue);
+rerenderAllTree(
+  state,
+  changePostCurrentValue,
+  addPost,
+  changeMessage,
+  addMessage
+);

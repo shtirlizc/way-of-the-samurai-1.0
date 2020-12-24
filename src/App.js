@@ -12,7 +12,13 @@ import Settings from "./pages/Settings";
 import "./App.css";
 
 const App = (props) => {
-  const { state, addPost, changePostCurrentValue } = props;
+  const {
+    state,
+    changePostCurrentValue,
+    addPost,
+    changeMessage,
+    addMessage,
+  } = props;
   const { profilePage, dialogsPage, sidebar } = state;
 
   return (
@@ -34,7 +40,13 @@ const App = (props) => {
           />
           <Route
             path="/dialogs"
-            render={() => <Dialogs state={dialogsPage} />}
+            render={() => (
+              <Dialogs
+                state={dialogsPage}
+                changeMessage={changeMessage}
+                addMessage={addMessage}
+              />
+            )}
           />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />

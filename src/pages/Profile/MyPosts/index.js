@@ -15,8 +15,7 @@ const MyPosts = (props) => {
 
   const newPost = (evt) => {
     evt.preventDefault();
-    addPost(textareaRef.current.value);
-    changePostCurrentValue("");
+    addPost();
   };
 
   const onChangeTextarea = () => {

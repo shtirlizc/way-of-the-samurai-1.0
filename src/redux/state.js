@@ -102,6 +102,7 @@ const state = {
         isMineMessage: false,
       },
     ],
+    newMessage: "",
   },
   sidebar: {
     friends,
@@ -117,18 +118,46 @@ const state = {
 
 export default state;
 
-export function addPost(message) {
-  state.profilePage.posts.push({
-    id: 5,
-    message,
-    likesCount: 0,
-  });
-
-  rerenderAllTree(state, addPost, changePostCurrentValue);
+function renderTree() {
+  rerenderAllTree(
+    state,
+    changePostCurrentValue,
+    addPost,
+    changeMessage,
+    addMessage
+  );
 }
 
 export function changePostCurrentValue(value) {
   state.profilePage.currentPost = value;
 
-  rerenderAllTree(state, addPost, changePostCurrentValue);
+  renderTree();
+}
+
+export function addPost() {
+  state.profilePage.posts.push({
+    id: 5,
+    message: state.profilePage.currentPost,
+    likesCount: 0,
+  });
+  state.profilePage.currentPost = "";
+
+  renderTree();
+}
+
+export function changeMessage(value) {
+  state.dialogsPage.newMessage = value;
+
+  renderTree();
+}
+
+export function addMessage() {
+  state.dialogsPage.messages.push({
+    id: 5,
+    message: state.dialogsPage.newMessage,
+    isMineMessage: true,
+  });
+  state.dialogsPage.newMessage = "";
+
+  renderTree();
 }
