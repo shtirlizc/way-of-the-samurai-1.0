@@ -1,4 +1,4 @@
-import { rerenderAllTree } from "../render";
+let rerenderAllTree;
 
 const profilePhoto =
   "https://sun9-47.userapi.com/impg/rTgw7T7n13coqYr4RBTihjxnUCwjyqdyVk7_jQ/MsfZ_BSiDGc.jpg?size=519x400&quality=96&proxy=1&sign=f1c988783fd5cce0d899203b5c958130&type=album";
@@ -41,7 +41,6 @@ const friends = [
       "https://sun7-6.userapi.com/impf/c846218/v846218977/737d4/55bdSrtV-cc.jpg?size=100x0&quality=96&crop=115,372,1173,1173&sign=91e6761cc17b62d04b1f1e506cc90e46&ava=1",
   },
 ];
-
 const state = {
   profilePage: {
     currentPost: "",
@@ -116,22 +115,10 @@ const state = {
   },
 };
 
-export default state;
-
-function renderTree() {
-  rerenderAllTree(
-    state,
-    changePostCurrentValue,
-    addPost,
-    changeMessage,
-    addMessage
-  );
-}
-
 export function changePostCurrentValue(value) {
   state.profilePage.currentPost = value;
 
-  renderTree();
+  rerenderAllTree();
 }
 
 export function addPost() {
@@ -142,13 +129,13 @@ export function addPost() {
   });
   state.profilePage.currentPost = "";
 
-  renderTree();
+  rerenderAllTree();
 }
 
 export function changeMessage(value) {
   state.dialogsPage.newMessage = value;
 
-  renderTree();
+  rerenderAllTree();
 }
 
 export function addMessage() {
@@ -159,5 +146,11 @@ export function addMessage() {
   });
   state.dialogsPage.newMessage = "";
 
-  renderTree();
+  rerenderAllTree();
 }
+
+export const subscribe = (observer) => {
+  rerenderAllTree = observer;
+};
+
+export default state;
