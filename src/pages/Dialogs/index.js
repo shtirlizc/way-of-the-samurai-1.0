@@ -5,7 +5,7 @@ import DialogItem from "./DialogItem";
 import s from "./Dialogs.module.css";
 
 const Dialogs = (props) => {
-  const { state, changeMessage, addMessage } = props;
+  const { state, dispatch } = props;
   const { dialogs, messages, newMessage } = state;
 
   const dialogsElements = dialogs.map(({ id, name, avatar }) => (
@@ -18,8 +18,7 @@ const Dialogs = (props) => {
       <MessageFeed
         messages={messages}
         newMessage={newMessage}
-        changeMessage={changeMessage}
-        addMessage={addMessage}
+        dispatch={dispatch}
       />
     </div>
   );

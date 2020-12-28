@@ -7,20 +7,11 @@ import reportWebVitals from "./reportWebVitals";
 
 const rerenderAllTree = () => {
   const state = store.getState();
-  const changePostCurrentValue = store.changePostCurrentValue.bind(store);
-  const addPost = store.addPost.bind(store);
-  const changeMessage = store.changeMessage.bind(store);
-  const addMessage = store.addMessage.bind(store);
+  const dispatch = store.dispatch.bind(store);
 
   ReactDOM.render(
     <React.StrictMode>
-      <App
-        state={state}
-        changePostCurrentValue={changePostCurrentValue}
-        addPost={addPost}
-        changeMessage={changeMessage}
-        addMessage={addMessage}
-      />
+      <App state={state} dispatch={dispatch} />
     </React.StrictMode>,
     document.getElementById("root")
   );

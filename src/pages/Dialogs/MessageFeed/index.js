@@ -6,7 +6,7 @@ import Message from "./Message";
 import s from "./MessageFeed.module.css";
 
 const MessageFeed = (props) => {
-  const { messages, newMessage, changeMessage, addMessage } = props;
+  const { messages, newMessage, dispatch } = props;
 
   const messagesElements = messages.map(({ id, message, isMineMessage }) => (
     <Message key={id} message={message} isMe={isMineMessage} />
@@ -15,11 +15,11 @@ const MessageFeed = (props) => {
 
   const onAddMessage = (evt) => {
     evt.preventDefault();
-    addMessage();
+    dispatch({ type: "ADD-MESSAGE" });
   };
 
   const onChangeNewMessage = () => {
-    changeMessage(textareaRef.current.value);
+    dispatch({ type: "CHANGE-MESSAGE", value: textareaRef.current.value });
   };
 
   return (

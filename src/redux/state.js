@@ -113,44 +113,45 @@ const store = {
       ],
     },
   },
-  getState() {
-    return this._state;
-  },
-
   _callSubscriber() {
     console.log("There aren't subscribers");
+  },
+
+  getState() {
+    return this._state;
   },
   subscribe(observer) {
     this._callSubscriber = observer;
   },
 
-  changePostCurrentValue(value) {
-    this._state.profilePage.currentPost = value;
+  dispatch(action) {
+    const { type, value } = action;
 
-    this._callSubscriber();
-  },
-  addPost() {
-    this._state.profilePage.posts.push({
-      id: 5,
-      message: this._state.profilePage.currentPost,
-      likesCount: 0,
-    });
-    this._state.profilePage.currentPost = "";
-
-    this._callSubscriber();
-  },
-  changeMessage(value) {
-    this._state.dialogsPage.newMessage = value;
-
-    this._callSubscriber();
-  },
-  addMessage() {
-    this._state.dialogsPage.messages.push({
-      id: 5,
-      message: this._state.dialogsPage.newMessage,
-      isMineMessage: true,
-    });
-    this._state.dialogsPage.newMessage = "";
+    switch (type) {
+      case "CHANGE-POST-CURRENT-VALUE":
+        this._state.profilePage.currentPost = value;
+        break;
+      case "ADD-POST":
+        this._state.profilePage.posts.push({
+          id: 5,
+          message: this._state.profilePage.currentPost,
+          likesCount: 0,
+        });
+        this._state.profilePage.currentPost = "";
+        break;
+      case "CHANGE-MESSAGE":
+        this._state.dialogsPage.newMessage = value;
+        break;
+      case "ADD-MESSAGE":
+        this._state.dialogsPage.messages.push({
+          id: 5,
+          message: this._state.dialogsPage.newMessage,
+          isMineMessage: true,
+        });
+        this._state.dialogsPage.newMessage = "";
+        break;
+      default:
+    }
 
     this._callSubscriber();
   },
