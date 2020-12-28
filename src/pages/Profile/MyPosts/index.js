@@ -6,11 +6,7 @@ import Button from "../../../components/Button";
 import s from "./MyPosts.module.css";
 
 const MyPosts = (props) => {
-  const { store } = props;
-  const state = store.getState();
-  const { profilePage } = state;
-  const { posts, currentPost } = profilePage;
-
+  const { posts, currentPost, addPost, changePostCurrentValue } = props;
   const postsElements = posts.map(({ id, message, likesCount }) => (
     <Post key={id} message={message} likes={likesCount} />
   ));
@@ -19,11 +15,11 @@ const MyPosts = (props) => {
 
   const newPost = (evt) => {
     evt.preventDefault();
-    store.addPost();
+    addPost();
   };
 
   const onChangeTextarea = () => {
-    store.changePostCurrentValue(textareaRef.current.value);
+    changePostCurrentValue(textareaRef.current.value);
   };
 
   return (
