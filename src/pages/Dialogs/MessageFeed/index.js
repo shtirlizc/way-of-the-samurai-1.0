@@ -2,6 +2,10 @@ import React, { useRef } from "react";
 import Textarea from "../../../components/Textarea";
 import Button from "../../../components/Button";
 import Message from "./Message";
+import {
+  addMessageActionCreator,
+  changeMessageActionCreator,
+} from "../../../redux/state";
 
 import s from "./MessageFeed.module.css";
 
@@ -15,11 +19,13 @@ const MessageFeed = (props) => {
 
   const onAddMessage = (evt) => {
     evt.preventDefault();
-    dispatch({ type: "ADD-MESSAGE" });
+    const action = addMessageActionCreator();
+    dispatch(action);
   };
 
   const onChangeNewMessage = () => {
-    dispatch({ type: "CHANGE-MESSAGE", value: textareaRef.current.value });
+    const action = changeMessageActionCreator(textareaRef.current.value);
+    dispatch(action);
   };
 
   return (

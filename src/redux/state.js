@@ -1,3 +1,8 @@
+const CHANGE_POST = "CHANGE-POST";
+const ADD_POST = "ADD-POST";
+const CHANGE_MESSAGE = "CHANGE-MESSAGE";
+const ADD_MESSAGE = "ADD-MESSAGE";
+
 const profilePhoto =
   "https://sun9-47.userapi.com/impg/rTgw7T7n13coqYr4RBTihjxnUCwjyqdyVk7_jQ/MsfZ_BSiDGc.jpg?size=519x400&quality=96&proxy=1&sign=f1c988783fd5cce0d899203b5c958130&type=album";
 const friends = [
@@ -128,10 +133,10 @@ const store = {
     const { type, value } = action;
 
     switch (type) {
-      case "CHANGE-POST":
+      case CHANGE_POST:
         this._state.profilePage.currentPost = value;
         break;
-      case "ADD-POST":
+      case ADD_POST:
         this._state.profilePage.posts.push({
           id: 5,
           message: this._state.profilePage.currentPost,
@@ -139,10 +144,10 @@ const store = {
         });
         this._state.profilePage.currentPost = "";
         break;
-      case "CHANGE-MESSAGE":
+      case CHANGE_MESSAGE:
         this._state.dialogsPage.newMessage = value;
         break;
-      case "ADD-MESSAGE":
+      case ADD_MESSAGE:
         this._state.dialogsPage.messages.push({
           id: 5,
           message: this._state.dialogsPage.newMessage,
@@ -156,5 +161,16 @@ const store = {
     this._callSubscriber();
   },
 };
+
+export const addPostActionCreator = () => ({ type: ADD_POST });
+export const changePostActionCreator = (value) => ({
+  type: CHANGE_POST,
+  value,
+});
+export const addMessageActionCreator = () => ({ type: ADD_MESSAGE });
+export const changeMessageActionCreator = (value) => ({
+  type: CHANGE_MESSAGE,
+  value,
+});
 
 export default store;

@@ -2,6 +2,10 @@ import React, { useRef } from "react";
 import Post from "./Post";
 import Textarea from "../../../components/Textarea";
 import Button from "../../../components/Button";
+import {
+  addPostActionCreator,
+  changePostActionCreator,
+} from "../../../redux/state";
 
 import s from "./MyPosts.module.css";
 
@@ -15,14 +19,13 @@ const MyPosts = (props) => {
 
   const newPost = (evt) => {
     evt.preventDefault();
-    dispatch({ type: "ADD-POST" });
+    const action = addPostActionCreator();
+    dispatch(action);
   };
 
   const onChangePost = () => {
-    dispatch({
-      type: "CHANGE-POST",
-      value: textareaRef.current.value,
-    });
+    const action = changePostActionCreator(textareaRef.current.value);
+    dispatch(action);
   };
 
   return (
