@@ -15,12 +15,12 @@ const MyPosts = (props) => {
 
   const newPost = (evt) => {
     evt.preventDefault();
-    dispatch({ type: "ADD_POST" });
+    dispatch({ type: "ADD-POST" });
   };
 
-  const onChangeTextarea = () => {
+  const onChangePost = () => {
     dispatch({
-      type: "CHANGE-POST-CURRENT-VALUE",
+      type: "CHANGE-POST",
       value: textareaRef.current.value,
     });
   };
@@ -34,7 +34,7 @@ const MyPosts = (props) => {
             placeholder="Your news..."
             required
             value={currentPost}
-            onChange={onChangeTextarea}
+            onChange={onChangePost}
           />
           <Button type="submit">Send</Button>
         </form>

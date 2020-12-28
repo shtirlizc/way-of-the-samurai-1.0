@@ -128,7 +128,7 @@ const store = {
     const { type, value } = action;
 
     switch (type) {
-      case "CHANGE-POST-CURRENT-VALUE":
+      case "CHANGE-POST":
         this._state.profilePage.currentPost = value;
         break;
       case "ADD-POST":
