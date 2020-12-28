@@ -1,8 +1,5 @@
-let rerenderAllTree;
-
 const profilePhoto =
   "https://sun9-47.userapi.com/impg/rTgw7T7n13coqYr4RBTihjxnUCwjyqdyVk7_jQ/MsfZ_BSiDGc.jpg?size=519x400&quality=96&proxy=1&sign=f1c988783fd5cce0d899203b5c958130&type=album";
-
 const friends = [
   {
     id: 1,
@@ -41,116 +38,122 @@ const friends = [
       "https://sun7-6.userapi.com/impf/c846218/v846218977/737d4/55bdSrtV-cc.jpg?size=100x0&quality=96&crop=115,372,1173,1173&sign=91e6761cc17b62d04b1f1e506cc90e46&ava=1",
   },
 ];
-const state = {
-  profilePage: {
-    currentPost: "",
-    posts: [
-      {
-        id: 1,
-        message: "Hi, how are you?",
-        likesCount: 12,
+
+const store = {
+  _subscriber() {
+    console.log("There is not subscribers");
+  },
+  subscribe(observer) {
+    this._subscriber = observer;
+  },
+
+  _state: {
+    profilePage: {
+      currentPost: "",
+      posts: [
+        {
+          id: 1,
+          message: "Hi, how are you?",
+          likesCount: 12,
+        },
+        {
+          id: 2,
+          message: "Yo yo yo",
+          likesCount: 1024,
+        },
+        {
+          id: 3,
+          message: "Yo",
+          likesCount: 111,
+        },
+        {
+          id: 4,
+          message: "It's, my first post",
+          likesCount: 11,
+        },
+      ],
+      info: {
+        name: "Marat S.",
+        avatar: profilePhoto,
+        bg:
+          "https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg",
+        birthday: "18th April",
+        city: "Ufa",
+        education: "USATU",
+        webSite: "shtirlizc.ru",
       },
-      {
-        id: 2,
-        message: "Yo yo yo",
-        likesCount: 1024,
-      },
-      {
-        id: 3,
-        message: "Yo",
-        likesCount: 111,
-      },
-      {
-        id: 4,
-        message: "It's, my first post",
-        likesCount: 11,
-      },
-    ],
-    info: {
-      name: "Marat S.",
-      avatar: profilePhoto,
-      bg:
-        "https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg",
-      birthday: "18th April",
-      city: "Ufa",
-      education: "USATU",
-      webSite: "shtirlizc.ru",
+    },
+    dialogsPage: {
+      dialogs: friends,
+      messages: [
+        {
+          id: 1,
+          message: "It's great!",
+          isMineMessage: true,
+        },
+        {
+          id: 2,
+          message: "Yo",
+          isMineMessage: true,
+        },
+        {
+          id: 3,
+          message: "How is your it-kamasutra?",
+          isMineMessage: false,
+        },
+        {
+          id: 4,
+          message: "Hi!",
+          isMineMessage: false,
+        },
+      ],
+      newMessage: "",
+    },
+    sidebar: {
+      friends,
+      navigation: [
+        { id: 1, link: "profile", text: "Profile" },
+        { id: 2, link: "dialogs", text: "Messages" },
+        { id: 3, link: "news", text: "News" },
+        { id: 4, link: "music", text: "Music" },
+        { id: 5, link: "settings", text: "Settings" },
+      ],
     },
   },
-  dialogsPage: {
-    dialogs: friends,
-    messages: [
-      {
-        id: 1,
-        message: "It's great!",
-        isMineMessage: true,
-      },
-      {
-        id: 2,
-        message: "Yo",
-        isMineMessage: true,
-      },
-      {
-        id: 3,
-        message: "How is your it-kamasutra?",
-        isMineMessage: false,
-      },
-      {
-        id: 4,
-        message: "Hi!",
-        isMineMessage: false,
-      },
-    ],
-    newMessage: "",
+  getState() {
+    return this._state;
   },
-  sidebar: {
-    friends,
-    navigation: [
-      { id: 1, link: "profile", text: "Profile" },
-      { id: 2, link: "dialogs", text: "Messages" },
-      { id: 3, link: "news", text: "News" },
-      { id: 4, link: "music", text: "Music" },
-      { id: 5, link: "settings", text: "Settings" },
-    ],
+
+  changePostCurrentValue(value) {
+    this._state.profilePage.currentPost = value;
+
+    this._subscriber();
+  },
+  addPost() {
+    this._state.profilePage.posts.push({
+      id: 5,
+      message: this._state.profilePage.currentPost,
+      likesCount: 0,
+    });
+    this._state.profilePage.currentPost = "";
+
+    this._subscriber();
+  },
+  changeMessage(value) {
+    this._state.dialogsPage.newMessage = value;
+
+    this._subscriber();
+  },
+  addMessage() {
+    this._state.dialogsPage.messages.push({
+      id: 5,
+      message: this._state.dialogsPage.newMessage,
+      isMineMessage: true,
+    });
+    this._state.dialogsPage.newMessage = "";
+
+    this._subscriber();
   },
 };
 
-export function changePostCurrentValue(value) {
-  state.profilePage.currentPost = value;
-
-  rerenderAllTree();
-}
-
-export function addPost() {
-  state.profilePage.posts.push({
-    id: 5,
-    message: state.profilePage.currentPost,
-    likesCount: 0,
-  });
-  state.profilePage.currentPost = "";
-
-  rerenderAllTree();
-}
-
-export function changeMessage(value) {
-  state.dialogsPage.newMessage = value;
-
-  rerenderAllTree();
-}
-
-export function addMessage() {
-  state.dialogsPage.messages.push({
-    id: 5,
-    message: state.dialogsPage.newMessage,
-    isMineMessage: true,
-  });
-  state.dialogsPage.newMessage = "";
-
-  rerenderAllTree();
-}
-
-export const subscribe = (observer) => {
-  rerenderAllTree = observer;
-};
-
-export default state;
+export default store;

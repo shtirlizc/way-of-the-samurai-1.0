@@ -3,18 +3,16 @@ import MyPosts from "./MyPosts";
 import ProfileInfo from "./ProfileInfo";
 
 const Profile = (props) => {
-  const { state, addPost, changePostCurrentValue } = props;
-  const { posts, info, currentPost } = state;
+  const { store } = props;
+
+  const state = store.getState();
+  const { profilePage } = state;
+  const { info } = profilePage;
 
   return (
     <>
       <ProfileInfo state={info} />
-      <MyPosts
-        posts={posts}
-        currentPost={currentPost}
-        addPost={addPost}
-        changePostCurrentValue={changePostCurrentValue}
-      />
+      <MyPosts store={store} />
     </>
   );
 };

@@ -5,8 +5,10 @@ import DialogItem from "./DialogItem";
 import s from "./Dialogs.module.css";
 
 const Dialogs = (props) => {
-  const { state, changeMessage, addMessage } = props;
-  const { dialogs, messages, newMessage } = state;
+  const { store } = props;
+  const state = store.getState();
+  const { dialogsPage } = state;
+  const { dialogs } = dialogsPage;
 
   const dialogsElements = dialogs.map(({ id, name, avatar }) => (
     <DialogItem key={id} id={id} name={name} avatar={avatar} />
@@ -15,12 +17,7 @@ const Dialogs = (props) => {
   return (
     <div className={s.root}>
       <div className={s.dialogs}>{dialogsElements}</div>
-      <MessageFeed
-        messages={messages}
-        newMessage={newMessage}
-        changeMessage={changeMessage}
-        addMessage={addMessage}
-      />
+      <MessageFeed store={store} />
     </div>
   );
 };

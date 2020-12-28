@@ -6,7 +6,10 @@ import Message from "./Message";
 import s from "./MessageFeed.module.css";
 
 const MessageFeed = (props) => {
-  const { messages, newMessage, changeMessage, addMessage } = props;
+  const { store } = props;
+  const state = store.getState();
+  const { dialogsPage } = state;
+  const { messages, newMessage } = dialogsPage;
 
   const messagesElements = messages.map(({ id, message, isMineMessage }) => (
     <Message key={id} message={message} isMe={isMineMessage} />
@@ -15,11 +18,11 @@ const MessageFeed = (props) => {
 
   const onAddMessage = (evt) => {
     evt.preventDefault();
-    addMessage();
+    store.addMessage();
   };
 
   const onChangeNewMessage = () => {
-    changeMessage(textareaRef.current.value);
+    store.changeMessage(textareaRef.current.value);
   };
 
   return (

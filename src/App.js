@@ -12,14 +12,10 @@ import Settings from "./pages/Settings";
 import "./App.css";
 
 const App = (props) => {
-  const {
-    state,
-    changePostCurrentValue,
-    addPost,
-    changeMessage,
-    addMessage,
-  } = props;
-  const { profilePage, dialogsPage, sidebar } = state;
+  const { store } = props;
+
+  const state = store.getState();
+  const { sidebar } = state;
 
   return (
     <BrowserRouter>
@@ -28,26 +24,8 @@ const App = (props) => {
         <Sidebar state={sidebar} />
 
         <main className="app-content">
-          <Route
-            path="/profile"
-            render={() => (
-              <Profile
-                state={profilePage}
-                addPost={addPost}
-                changePostCurrentValue={changePostCurrentValue}
-              />
-            )}
-          />
-          <Route
-            path="/dialogs"
-            render={() => (
-              <Dialogs
-                state={dialogsPage}
-                changeMessage={changeMessage}
-                addMessage={addMessage}
-              />
-            )}
-          />
+          <Route path="/profile" render={() => <Profile store={store} />} />
+          <Route path="/dialogs" render={() => <Dialogs store={store} />} />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
           <Route path="/settings" component={Settings} />
