@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import Post from "./Post";
 import Textarea from "../../../components/Textarea";
 import Button from "../../../components/Button";
@@ -15,16 +15,14 @@ const MyPosts = (props) => {
     <Post key={id} message={message} likes={likesCount} />
   ));
 
-  const textareaRef = useRef(null);
-
   const newPost = (evt) => {
     evt.preventDefault();
     const action = addPostActionCreator();
     dispatch(action);
   };
 
-  const onChangePost = () => {
-    const action = changePostActionCreator(textareaRef.current.value);
+  const onChangePost = (evt) => {
+    const action = changePostActionCreator(evt.target.value);
     dispatch(action);
   };
 
@@ -33,7 +31,6 @@ const MyPosts = (props) => {
       <div className={s.postsNew}>
         <form action="" className={s.form} onSubmit={newPost}>
           <Textarea
-            ref={textareaRef}
             placeholder="Your news..."
             required
             value={currentPost}

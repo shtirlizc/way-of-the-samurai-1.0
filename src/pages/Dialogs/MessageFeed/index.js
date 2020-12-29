@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import Textarea from "../../../components/Textarea";
 import Button from "../../../components/Button";
 import Message from "./Message";
@@ -15,7 +15,6 @@ const MessageFeed = (props) => {
   const messagesElements = messages.map(({ id, message, isMineMessage }) => (
     <Message key={id} message={message} isMe={isMineMessage} />
   ));
-  const textareaRef = useRef(null);
 
   const onAddMessage = (evt) => {
     evt.preventDefault();
@@ -23,8 +22,8 @@ const MessageFeed = (props) => {
     dispatch(action);
   };
 
-  const onChangeNewMessage = () => {
-    const action = changeMessageActionCreator(textareaRef.current.value);
+  const onChangeNewMessage = (evt) => {
+    const action = changeMessageActionCreator(evt.target.value);
     dispatch(action);
   };
 
@@ -34,7 +33,6 @@ const MessageFeed = (props) => {
 
       <form action="" className={s.newMessage} onSubmit={onAddMessage}>
         <Textarea
-          ref={textareaRef}
           value={newMessage}
           onChange={onChangeNewMessage}
           placeholder="Type message..."

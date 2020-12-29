@@ -7,7 +7,7 @@ const Button = (props) => {
   const { children, className } = props;
 
   return (
-    <button className={classNames(s.root, className)} {...props}>
+    <button {...props} className={classNames(s.root, className)}>
       {children}
     </button>
   );
