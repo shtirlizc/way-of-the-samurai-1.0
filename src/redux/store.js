@@ -1,7 +1,6 @@
-const CHANGE_POST = "CHANGE-POST";
-const ADD_POST = "ADD-POST";
-const CHANGE_MESSAGE = "CHANGE-MESSAGE";
-const ADD_MESSAGE = "ADD-MESSAGE";
+import profileReducer from "./profileReducer";
+import dialogsReducer from "./dialogsReducer";
+import sidebarReducer from "./sidebarReducer";
 
 const profilePhoto =
   "https://sun9-47.userapi.com/impg/rTgw7T7n13coqYr4RBTihjxnUCwjyqdyVk7_jQ/MsfZ_BSiDGc.jpg?size=519x400&quality=96&proxy=1&sign=f1c988783fd5cce0d899203b5c958130&type=album";
@@ -130,47 +129,12 @@ const store = {
   },
 
   dispatch(action) {
-    const { type, value } = action;
-
-    switch (type) {
-      case CHANGE_POST:
-        this._state.profilePage.currentPost = value;
-        break;
-      case ADD_POST:
-        this._state.profilePage.posts.push({
-          id: 5,
-          message: this._state.profilePage.currentPost,
-          likesCount: 0,
-        });
-        this._state.profilePage.currentPost = "";
-        break;
-      case CHANGE_MESSAGE:
-        this._state.dialogsPage.newMessage = value;
-        break;
-      case ADD_MESSAGE:
-        this._state.dialogsPage.messages.push({
-          id: 5,
-          message: this._state.dialogsPage.newMessage,
-          isMineMessage: true,
-        });
-        this._state.dialogsPage.newMessage = "";
-        break;
-      default:
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+    this._state.sidebar = sidebarReducer(this._state.sidebar, action);
 
     this._callSubscriber();
   },
 };
-
-export const addPostActionCreator = () => ({ type: ADD_POST });
-export const changePostActionCreator = (value) => ({
-  type: CHANGE_POST,
-  value,
-});
-export const addMessageActionCreator = () => ({ type: ADD_MESSAGE });
-export const changeMessageActionCreator = (value) => ({
-  type: CHANGE_MESSAGE,
-  value,
-});
 
 export default store;
