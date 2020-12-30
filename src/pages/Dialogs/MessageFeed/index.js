@@ -5,7 +5,7 @@ import Message from "./Message";
 import {
   addMessageActionCreator,
   changeMessageActionCreator,
-} from "../../../redux/dialogsReducer";
+} from "../../../redux/reducers/dialogsReducer";
 
 import s from "./MessageFeed.module.css";
 

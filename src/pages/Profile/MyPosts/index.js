@@ -5,7 +5,7 @@ import Button from "../../../components/Button";
 import {
   addPostActionCreator,
   changePostActionCreator,
-} from "../../../redux/profileReducer";
+} from "../../../redux/reducers/profileReducer";
 
 import s from "./MyPosts.module.css";
 

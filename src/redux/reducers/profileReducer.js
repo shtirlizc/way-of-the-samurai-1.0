@@ -1,7 +1,9 @@
+import { profileInitialState as initialState } from "../stateConstants";
+
 const CHANGE_POST = "CHANGE-POST";
 const ADD_POST = "ADD-POST";
 
-const profileReducer = (state, action) => {
+const profileReducer = (state = initialState, action) => {
   const { type, value } = action;
 
   switch (type) {
@@ -10,7 +12,7 @@ const profileReducer = (state, action) => {
 
       return state;
     case ADD_POST:
-      this._state.profilePage.posts.push({
+      state.posts.push({
         id: 5,
         message: state.currentPost,
         likesCount: 0,
