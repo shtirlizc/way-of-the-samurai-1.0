@@ -6,12 +6,9 @@ import store from "./redux/reduxStore";
 import reportWebVitals from "./reportWebVitals";
 
 const rerenderAllTree = () => {
-  const state = store.getState();
-  const dispatch = store.dispatch.bind(store);
-
   ReactDOM.render(
     <React.StrictMode>
-      <App state={state} dispatch={dispatch} />
+      <App store={store} />
     </React.StrictMode>,
     document.getElementById("root")
   );

@@ -2,8 +2,11 @@ import React from "react";
 import s from "./ProfileInfo.module.css";
 
 const ProfileInfo = (props) => {
-  const { state } = props;
-  const { name, avatar, bg, birthday, city, education, webSite } = state;
+  const { store } = props;
+  const state = store.getState();
+  const { profilePage } = state;
+  const { info } = profilePage;
+  const { name, avatar, bg, birthday, city, education, webSite } = info;
   const webSiteAddress = `https://${webSite}`;
 
   return (

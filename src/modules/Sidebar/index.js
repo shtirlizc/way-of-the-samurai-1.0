@@ -5,8 +5,10 @@ import PageLink from "./PageLink";
 import s from "./Sidebar.module.css";
 
 const Sidebar = (props) => {
-  const { state } = props;
-  const { friends, navigation } = state;
+  const { store } = props;
+  const state = store.getState();
+  const { sidebar } = state;
+  const { friends, navigation } = sidebar;
 
   const navigationElements = navigation.map(({ id, link, text }) => (
     <PageLink key={id} id={id} link={link} text={text} />

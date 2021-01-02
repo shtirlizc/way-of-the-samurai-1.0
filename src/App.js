@@ -12,24 +12,17 @@ import Settings from "./pages/Settings";
 import "./App.css";
 
 const App = (props) => {
-  const { state, dispatch } = props;
-  const { profilePage, dialogsPage, sidebar } = state;
+  const { store } = props;
 
   return (
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Sidebar state={sidebar} />
+        <Sidebar store={store} />
 
         <main className="app-content">
-          <Route
-            path="/profile"
-            render={() => <Profile state={profilePage} dispatch={dispatch} />}
-          />
-          <Route
-            path="/dialogs"
-            render={() => <Dialogs state={dialogsPage} dispatch={dispatch} />}
-          />
+          <Route path="/profile" render={() => <Profile store={store} />} />
+          <Route path="/dialogs" render={() => <Dialogs store={store} />} />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
           <Route path="/settings" component={Settings} />

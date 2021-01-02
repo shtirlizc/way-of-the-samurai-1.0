@@ -2,15 +2,10 @@ import React from "react";
 import Textarea from "../../../components/Textarea";
 import Button from "../../../components/Button";
 import Message from "./Message";
-import {
-  addMessageActionCreator,
-  changeMessageActionCreator,
-} from "../../../redux/reducers/dialogsReducer";
-
 import s from "./MessageFeed.module.css";
 
 const MessageFeed = (props) => {
-  const { messages, newMessage, dispatch } = props;
+  const { messages, newMessage, addMessage, changeNewMessage } = props;
 
   const messagesElements = messages.map(({ id, message, isMineMessage }) => (
     <Message key={id} message={message} isMe={isMineMessage} />
@@ -18,13 +13,11 @@ const MessageFeed = (props) => {
 
   const onAddMessage = (evt) => {
     evt.preventDefault();
-    const action = addMessageActionCreator();
-    dispatch(action);
+    addMessage();
   };
 
   const onChangeNewMessage = (evt) => {
-    const action = changeMessageActionCreator(evt.target.value);
-    dispatch(action);
+    changeNewMessage(evt.target.value);
   };
 
   return (

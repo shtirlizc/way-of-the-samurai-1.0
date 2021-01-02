@@ -2,34 +2,27 @@ import React from "react";
 import Post from "./Post";
 import Textarea from "../../../components/Textarea";
 import Button from "../../../components/Button";
-import {
-  addPostActionCreator,
-  changePostActionCreator,
-} from "../../../redux/reducers/profileReducer";
-
 import s from "./MyPosts.module.css";
 
 const MyPosts = (props) => {
-  const { posts, currentPost, dispatch } = props;
+  const { posts, currentPost, addPost, changePost } = props;
   const postsElements = posts.map(({ id, message, likesCount }) => (
     <Post key={id} message={message} likes={likesCount} />
   ));
 
-  const newPost = (evt) => {
+  const onAddPost = (evt) => {
     evt.preventDefault();
-    const action = addPostActionCreator();
-    dispatch(action);
+    addPost();
   };
 
   const onChangePost = (evt) => {
-    const action = changePostActionCreator(evt.target.value);
-    dispatch(action);
+    changePost(evt.target.value);
   };
 
   return (
     <div className={s.posts}>
       <div className={s.postsNew}>
-        <form action="" className={s.form} onSubmit={newPost}>
+        <form action="" className={s.form} onSubmit={onAddPost}>
           <Textarea
             placeholder="Your news..."
             required
