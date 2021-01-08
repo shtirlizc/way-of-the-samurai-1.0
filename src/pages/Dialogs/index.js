@@ -3,13 +3,11 @@ import DialogsList from "./DialogsList";
 import MessageFeedContainer from "./MessageFeed/MessageFeedContainer";
 import s from "./Dialogs.module.css";
 
-const Dialogs = (props) => {
-  const { store } = props;
-
+const Dialogs = () => {
   return (
     <div className={s.root}>
-      <DialogsList store={store} />
-      <MessageFeedContainer store={store} />
+      <DialogsList />
+      <MessageFeedContainer />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
 import Header from "./modules/Header";
-import Sidebar from "./modules/Sidebar";
+import SidebarContainer from "./modules/Sidebar/SidebarContainer";
 import Profile from "./pages/Profile";
 import Dialogs from "./pages/Dialogs";
 import News from "./pages/News";
@@ -11,18 +11,16 @@ import Settings from "./pages/Settings";
 
 import "./App.css";
 
-const App = (props) => {
-  const { store } = props;
-
+const App = () => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Sidebar store={store} />
+        <SidebarContainer />
 
         <main className="app-content">
-          <Route path="/profile" render={() => <Profile store={store} />} />
-          <Route path="/dialogs" render={() => <Dialogs store={store} />} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/dialogs" component={Dialogs} />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
           <Route path="/settings" component={Settings} />
