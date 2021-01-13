@@ -9,6 +9,7 @@ const MyPosts = (props) => {
   const postsElements = posts.map(({ id, message, likesCount }) => (
     <Post key={id} message={message} likes={likesCount} />
   ));
+  postsElements.reverse();
 
   const onAddPost = (evt) => {
     evt.preventDefault();

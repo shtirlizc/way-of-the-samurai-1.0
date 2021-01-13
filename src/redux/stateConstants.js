@@ -42,7 +42,7 @@ export const profileInitialState = {
   posts: [
     {
       id: 1,
-      message: "Hi, how are you?",
+      message: "It's, my first post",
       likesCount: 12,
     },
     {
@@ -57,7 +57,7 @@ export const profileInitialState = {
     },
     {
       id: 4,
-      message: "It's, my first post",
+      message: "Hi, how are you?",
       likesCount: 11,
     },
   ],
@@ -79,23 +79,23 @@ export const dialogsInitialState = {
   messages: [
     {
       id: 1,
-      message: "It's great!",
-      isMineMessage: true,
+      message: "Hi!",
+      isMineMessage: false,
     },
     {
       id: 2,
-      message: "Yo",
-      isMineMessage: true,
-    },
-    {
-      id: 3,
       message: "How is your it-kamasutra?",
       isMineMessage: false,
     },
     {
+      id: 3,
+      message: "Yo",
+      isMineMessage: true,
+    },
+    {
       id: 4,
-      message: "Hi!",
-      isMineMessage: false,
+      message: "It's great!",
+      isMineMessage: true,
     },
   ],
   newMessage: "",
