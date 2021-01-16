@@ -5,6 +5,7 @@ import Header from "./modules/Header";
 import SidebarContainer from "./modules/Sidebar/SidebarContainer";
 import Profile from "./pages/Profile";
 import Dialogs from "./pages/Dialogs";
+import UsersContainer from "./pages/Users/UsersContainer";
 import News from "./pages/News";
 import Music from "./pages/Music";
 import Settings from "./pages/Settings";
@@ -21,6 +22,7 @@ const App = () => {
         <main className="app-content">
           <Route path="/profile" component={Profile} />
           <Route path="/dialogs" component={Dialogs} />
+          <Route path="/users" component={UsersContainer} />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
           <Route path="/settings" component={Settings} />

@@ -37,6 +37,22 @@ const friends = [
   },
 ];
 
+export const sidebarInitialState = {
+  friends,
+  navigation: [
+    { id: 1, link: "profile", text: "Profile" },
+    { id: 2, link: "dialogs", text: "Messages" },
+    { id: 3, link: "users", text: "Users" },
+    { id: 4, link: "news", text: "News" },
+    { id: 5, link: "music", text: "Music" },
+    { id: 6, link: "settings", text: "Settings" },
+  ],
+};
+
+export const usersInitialState = {
+  users: [],
+};
+
 export const profileInitialState = {
   currentPost: "",
   posts: [
@@ -99,15 +115,4 @@ export const dialogsInitialState = {
     },
   ],
   newMessage: "",
-};
-
-export const sidebarInitialState = {
-  friends,
-  navigation: [
-    { id: 1, link: "profile", text: "Profile" },
-    { id: 2, link: "dialogs", text: "Messages" },
-    { id: 3, link: "news", text: "News" },
-    { id: 4, link: "music", text: "Music" },
-    { id: 5, link: "settings", text: "Settings" },
-  ],
 };
