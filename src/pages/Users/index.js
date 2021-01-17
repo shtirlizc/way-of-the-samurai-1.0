@@ -1,5 +1,6 @@
 import React from "react";
-
+import Title from "../../components/Title";
+import Button from "../../components/Button";
 import s from "./Users.module.css";
 
 const usersList = [
@@ -100,41 +101,43 @@ const Users = (props) => {
 
   return (
     <div className={s.root}>
+      <Title>Users</Title>
+
       {users.map(
         ({ id, firstName, lastName, photoUrl, status, location, followed }) => (
-          <div key={id} style={{ display: "flex" }}>
-            <div>
-              <div>
+          <div key={id} className={s.user}>
+            <div className={s.userAvatar}>
+              <div className={s.userImg}>
                 <img src={photoUrl} alt="" />
               </div>
-              <div>
+              <div className={s.userFollow}>
                 {followed ? (
-                  <button
+                  <Button
                     onClick={() => {
                       onUnfollow(id);
                     }}
                   >
                     Unfollow
-                  </button>
+                  </Button>
                 ) : (
-                  <button
+                  <Button
                     onClick={() => {
                       onFollow(id);
                     }}
                   >
                     Follow
-                  </button>
+                  </Button>
                 )}
               </div>
             </div>
-            <div style={{ display: "flex" }}>
-              <div>
-                <p>
+            <div className={s.userBody}>
+              <div className={s.userInfo}>
+                <h3 className={s.userName}>
                   {firstName} {lastName}
-                </p>
-                <p>{status}</p>
+                </h3>
+                <p className={s.userStatus}>{status}</p>
               </div>
-              <div>
+              <div className={s.userLocation}>
                 <p>{location.city}</p>
                 <p>{location.country}</p>
               </div>
@@ -142,6 +145,10 @@ const Users = (props) => {
           </div>
         )
       )}
+
+      <div className={s.showMore}>
+        <Button>Show more</Button>
+      </div>
     </div>
   );
 };

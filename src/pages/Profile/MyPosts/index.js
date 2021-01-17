@@ -30,7 +30,9 @@ const MyPosts = (props) => {
             value={currentPost}
             onChange={onChangePost}
           />
-          <Button type="submit">Send</Button>
+          <Button type="submit" className={s.sendPost}>
+            Send
+          </Button>
         </form>
       </div>
       <h3 className={s.postsTitle}>My posts</h3>

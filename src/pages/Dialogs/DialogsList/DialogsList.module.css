@@ -1,5 +1,17 @@
 .root {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-right: 10px;
+}
+
+.root::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: #aaa;
 }

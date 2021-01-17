@@ -12,6 +12,10 @@
   align-items: flex-end;
 }
 
+.sendPost {
+  margin-top: 10px;
+}
+
 .postsTitle {
   font-size: 20px;
   font-weight: 400;

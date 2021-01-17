@@ -4,7 +4,8 @@
   padding: 20px;
   position: sticky;
   top: 0;
-  box-shadow: 4px 4px 15px 0 rgba(0, 0, 0, .3);
+  box-shadow: 4px 4px 15px 0 rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
 .root img {

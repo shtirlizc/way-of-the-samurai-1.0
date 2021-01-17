@@ -31,7 +31,9 @@ const MessageFeed = (props) => {
           placeholder="Type message..."
           required
         />
-        <Button type="submit">Send</Button>
+        <Button type="submit" className={s.sendMessage}>
+          Send
+        </Button>
       </form>
     </div>
   );
