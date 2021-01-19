@@ -5,87 +5,84 @@ import Button from "../../components/Button";
 import DefaultUserImage from "../../assets/images/user.png";
 import s from "./Users.module.css";
 
-const Users = (props) => {
-  const { users, setUsers, follow, unfollow } = props;
+class Users extends React.Component {
+  constructor(props) {
+    super(props);
+    axios
+      .get("https://social-network.samuraijs.com/api/1.0/users")
+      .then((response) => {
+        props.setUsers(response.data.items);
+      });
+  }
 
-  const getUsers = () => {
+  onFollow = (userId) => {
+    this.props.follow(userId);
+  };
+
+  onUnfollow = (userId) => {
+    this.props.unfollow(userId);
+  };
+
+  render() {
+    const { users } = this.props;
+
     if (!users.length) {
-      axios
-        .get("https://social-network.samuraijs.com/api/1.0/users")
-        .then((response) => {
-          setUsers(response.data.items);
-        });
+      return <div>Loading...</div>;
     }
-  };
 
-  const onFollow = (userId) => {
-    follow(userId);
-  };
+    return (
+      <div className={s.root}>
+        <Title>Users</Title>
 
-  const onUnfollow = (userId) => {
-    unfollow(userId);
-  };
+        {users.map(({ id, name, photos, status, followed }) => {
+          const userImage = photos.small ? photos.small : DefaultUserImage;
 
-  return (
-    <div className={s.root}>
-      <Title>Users</Title>
-
-      {!users.length && (
-        <div style={{ textAlign: "center" }}>
-          <Button onClick={getUsers}>Get Users</Button>
-        </div>
-      )}
-
-      {users.map(({ id, name, photos, status, followed }) => {
-        const userImage = photos.small ? photos.small : DefaultUserImage;
-
-        return (
-          <div key={id} className={s.user}>
-            <div className={s.userAvatar}>
-              <div className={s.userImg}>
-                <img src={userImage} alt={name} />
+          return (
+            <div key={id} className={s.user}>
+              <div className={s.userAvatar}>
+                <div className={s.userImg}>
+                  <img src={userImage} alt={name} />
+                </div>
+                <div className={s.userFollow}>
+                  {followed ? (
+                    <Button
+                      onClick={() => {
+                        this.onUnfollow(id);
+                      }}
+                    >
+                      Unfollow
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={() => {
+                        this.onFollow(id);
+                      }}
+                    >
+                      Follow
+                    </Button>
+                  )}
+                </div>
               </div>
-              <div className={s.userFollow}>
-                {followed ? (
-                  <Button
-                    onClick={() => {
-                      onUnfollow(id);
-                    }}
-                  >
-                    Unfollow
-                  </Button>
-                ) : (
-                  <Button
-                    onClick={() => {
-                      onFollow(id);
-                    }}
-                  >
-                    Follow
-                  </Button>
-                )}
+              <div className={s.userBody}>
+                <div className={s.userInfo}>
+                  <h3 className={s.userName}>{name}</h3>
+                  {status && <p className={s.userStatus}>{status}</p>}
+                </div>
+                <div className={s.userLocation}>
+                  <p>{"location.city"}</p>
+                  <p>{"location.country"}</p>
+                </div>
               </div>
             </div>
-            <div className={s.userBody}>
-              <div className={s.userInfo}>
-                <h3 className={s.userName}>{name}</h3>
-                {status && <p className={s.userStatus}>{status}</p>}
-              </div>
-              <div className={s.userLocation}>
-                <p>{"location.city"}</p>
-                <p>{"location.country"}</p>
-              </div>
-            </div>
-          </div>
-        );
-      })}
+          );
+        })}
 
-      {Boolean(users.length) && (
         <div className={s.showMore}>
           <Button>Show more</Button>
         </div>
-      )}
-    </div>
-  );
-};
+      </div>
+    );
+  }
+}
 
 export default Users;
