@@ -8,13 +8,15 @@ import s from "./Users.module.css";
 const Users = (props) => {
   const { users, setUsers, follow, unfollow } = props;
 
-  if (!users.length) {
-    axios
-      .get("https://social-network.samuraijs.com/api/1.0/users")
-      .then((response) => {
-        setUsers(response.data.items);
-      });
-  }
+  const getUsers = () => {
+    if (!users.length) {
+      axios
+        .get("https://social-network.samuraijs.com/api/1.0/users")
+        .then((response) => {
+          setUsers(response.data.items);
+        });
+    }
+  };
 
   const onFollow = (userId) => {
     follow(userId);
@@ -27,6 +29,12 @@ const Users = (props) => {
   return (
     <div className={s.root}>
       <Title>Users</Title>
+
+      {!users.length && (
+        <div style={{ textAlign: "center" }}>
+          <Button onClick={getUsers}>Get Users</Button>
+        </div>
+      )}
 
       {users.map(({ id, name, photos, status, followed }) => {
         const userImage = photos.small ? photos.small : DefaultUserImage;
@@ -71,9 +79,11 @@ const Users = (props) => {
         );
       })}
 
-      <div className={s.showMore}>
-        <Button>Show more</Button>
-      </div>
+      {Boolean(users.length) && (
+        <div className={s.showMore}>
+          <Button>Show more</Button>
+        </div>
+      )}
     </div>
   );
 };
