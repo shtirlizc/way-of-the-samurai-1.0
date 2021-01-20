@@ -29,6 +29,7 @@ class Users extends React.Component {
   };
 
   onChangePage = (page) => {
+    this.props.setCurrentPage(page);
     axios
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`
@@ -36,7 +37,6 @@ class Users extends React.Component {
       .then((response) => {
         this.props.setUsers(response.data.items);
       });
-    this.props.setCurrentPage(page);
   };
 
   showPagination = () => (
