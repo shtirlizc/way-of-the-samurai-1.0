@@ -51,6 +51,9 @@ export const sidebarInitialState = {
 
 export const usersInitialState = {
   users: [],
+  currentPage: 1,
+  pageSize: 100,
+  totalCount: 0,
 };
 
 export const profileInitialState = {

@@ -2,18 +2,22 @@ import React from "react";
 import * as axios from "axios";
 import Title from "../../components/Title";
 import Button from "../../components/Button";
+import Pagination from "../../components/Pagination";
 import DefaultUserImage from "../../assets/images/user.png";
 import s from "./Users.module.css";
 
 class Users extends React.Component {
   componentDidMount() {
-    if (!this.props.users.length) {
-      axios
-        .get("https://social-network.samuraijs.com/api/1.0/users")
-        .then((response) => {
-          this.props.setUsers(response.data.items);
-        });
-    }
+    const { currentPage, pageSize } = this.props;
+
+    axios
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`
+      )
+      .then((response) => {
+        this.props.setUsers(response.data.items);
+        this.props.setTotalPages(response.data.totalCount);
+      });
   }
 
   onFollow = (userId) => {
@@ -23,6 +27,26 @@ class Users extends React.Component {
   onUnfollow = (userId) => {
     this.props.unfollow(userId);
   };
+
+  onChangePage = (page) => {
+    axios
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`
+      )
+      .then((response) => {
+        this.props.setUsers(response.data.items);
+      });
+    this.props.setCurrentPage(page);
+  };
+
+  showPagination = () => (
+    <Pagination
+      currentPage={this.props.currentPage}
+      totalCount={this.props.totalCount}
+      pageSize={this.props.pageSize}
+      onChangePage={this.onChangePage}
+    />
+  );
 
   render() {
     const { users } = this.props;
@@ -34,6 +58,8 @@ class Users extends React.Component {
     return (
       <div className={s.root}>
         <Title>Users</Title>
+
+        <div className={s.paginationTop}>{this.showPagination()}</div>
 
         {users.map(({ id, name, photos, status, followed }) => {
           const userImage = photos.small ? photos.small : DefaultUserImage;
@@ -78,9 +104,11 @@ class Users extends React.Component {
           );
         })}
 
-        <div className={s.showMore}>
+        <div className={s.paginationBottom}>{this.showPagination()}</div>
+
+        {/*<div className={s.showMore}>
           <Button>Show more</Button>
-        </div>
+        </div>*/}
       </div>
     );
   }

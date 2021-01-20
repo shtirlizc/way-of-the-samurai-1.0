@@ -4,10 +4,19 @@ import classNames from "classnames";
 import s from "./Button.module.css";
 
 const Button = (props) => {
-  const { children, className } = props;
+  const { children, fullWidth, active, className, type, onClick } = props;
 
   return (
-    <button {...props} className={classNames(s.root, className)}>
+    <button
+      className={classNames(
+        s.root,
+        className,
+        fullWidth && s.fullWidth,
+        active && s.active
+      )}
+      type={type}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
