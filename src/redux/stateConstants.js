@@ -54,6 +54,7 @@ export const usersInitialState = {
   currentPage: 1,
   pageSize: 100,
   totalCount: 0,
+  isFetching: false,
 };
 
 export const profileInitialState = {

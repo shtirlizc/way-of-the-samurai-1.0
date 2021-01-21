@@ -19,10 +19,6 @@ const Users = (props) => {
     />
   );
 
-  if (!users.length) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div className={s.root}>
       <Title>Users</Title>

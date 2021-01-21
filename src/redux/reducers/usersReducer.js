@@ -5,6 +5,7 @@ const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_TOTAL_PAGES = "SET-TOTAL-PAGES";
 const SET_CURRENT_PAGE = "SET-CURRENT-PAGE";
+const TOGGLE_IS_FETCHING = "TOGGLE-IS-FETCHING";
 
 const usersReducer = (state = initialState, action) => {
   const { type } = action;
@@ -54,6 +55,12 @@ const usersReducer = (state = initialState, action) => {
         currentPage: action.currentPage,
       };
 
+    case TOGGLE_IS_FETCHING:
+      return {
+        ...state,
+        isFetching: action.isFetching,
+      };
+
     default:
       return state;
   }
@@ -69,6 +76,10 @@ export const setTotalPagesActionCreator = (totalPages) => ({
 export const setCurrentPageActionCreator = (currentPage) => ({
   type: SET_CURRENT_PAGE,
   currentPage,
+});
+export const toggleIsFetchingActionCreator = (isFetching) => ({
+  type: TOGGLE_IS_FETCHING,
+  isFetching,
 });
 
 export default usersReducer;
