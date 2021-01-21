@@ -1,5 +1,7 @@
+import React from "react";
 import { connect } from "react-redux";
-import Users from "./index";
+import * as axios from "axios";
+
 import {
   setUsersActionCreator,
   followActionCreator,
@@ -7,6 +9,55 @@ import {
   setTotalPagesActionCreator,
   setCurrentPageActionCreator,
 } from "../../redux/reducers/usersReducer";
+import Users from "./index";
+
+class UsersContainer extends React.Component {
+  componentDidMount() {
+    const { currentPage, pageSize } = this.props;
+
+    axios
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`
+      )
+      .then((response) => {
+        this.props.setUsers(response.data.items);
+        this.props.setTotalPages(response.data.totalCount);
+      });
+  }
+
+  onChangePage = (page) => {
+    this.props.setCurrentPage(page);
+    axios
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`
+      )
+      .then((response) => {
+        this.props.setUsers(response.data.items);
+      });
+  };
+
+  onFollow = (userId) => {
+    this.props.follow(userId);
+  };
+
+  onUnfollow = (userId) => {
+    this.props.unfollow(userId);
+  };
+
+  render() {
+    const { users, currentPage, totalCount, pageSize } = this.props;
+
+    return (
+      <Users
+        users={users}
+        currentPage={currentPage}
+        totalCount={totalCount}
+        pageSize={pageSize}
+        onChangePage={this.onChangePage}
+      />
+    );
+  }
+}
 
 const mapStateToProps = (state) => ({
   users: state.usersPage.users,
@@ -38,6 +89,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
-
-export default UsersContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
