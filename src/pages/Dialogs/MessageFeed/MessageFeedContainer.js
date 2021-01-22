@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 import MessageFeed from "./index";
 import {
-  addMessageActionCreator,
-  changeMessageActionCreator,
+  addMessage,
+  changeMessage,
 } from "../../../redux/reducers/dialogsReducer";
 
 const mapStateToProps = (state) => ({
@@ -10,20 +10,9 @@ const mapStateToProps = (state) => ({
   newMessage: state.dialogsPage.newMessage,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  addMessage: () => {
-    const action = addMessageActionCreator();
-    dispatch(action);
-  },
-  changeNewMessage: (value) => {
-    const action = changeMessageActionCreator(value);
-    dispatch(action);
-  },
-});
-
-const MessageFeedContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MessageFeed);
+const MessageFeedContainer = connect(mapStateToProps, {
+  addMessage,
+  changeMessage,
+})(MessageFeed);
 
 export default MessageFeedContainer;
