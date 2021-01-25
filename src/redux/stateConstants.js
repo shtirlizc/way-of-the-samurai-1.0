@@ -81,17 +81,6 @@ export const profileInitialState = {
       likesCount: 11,
     },
   ],
-  info: {
-    name: "Marat S.",
-    avatar:
-      "https://sun9-47.userapi.com/impg/rTgw7T7n13coqYr4RBTihjxnUCwjyqdyVk7_jQ/MsfZ_BSiDGc.jpg?size=519x400&quality=96&proxy=1&sign=f1c988783fd5cce0d899203b5c958130&type=album",
-    bg:
-      "https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg",
-    birthday: "18th April",
-    city: "Ufa",
-    education: "USATU",
-    webSite: "shtirlizc.ru",
-  },
   profile: null,
 };
 
