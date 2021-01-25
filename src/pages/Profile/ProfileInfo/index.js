@@ -24,7 +24,7 @@ const ProfileInfo = (props) => {
 
   const makeLink = (id) => {
     return (
-      <a href={`https://${id}`} target="_blank" rel="noreferrer">
+      <a href={id} target="_blank" rel="noreferrer">
         {id}
       </a>
     );
@@ -40,26 +40,26 @@ const ProfileInfo = (props) => {
             </div>
           )}
 
-          <div className={s.profileMore}>
-            {lookingForAJob && (
-              <>
-                <p className={s.lookForAJob}>Ищу работу</p>
-                <p className={s.lookForAJobDesc}>{lookingForAJobDescription}</p>
-              </>
-            )}
-          </div>
+          {lookingForAJob && (
+            <div className={s.profileMore}>
+              <p className={s.lookForAJob}>Ищу работу</p>
+              <p className={s.lookForAJobDesc}>{lookingForAJobDescription}</p>
+            </div>
+          )}
         </div>
 
         <div className={s.profileDesc}>
           <h3 className={s.profileName}>{fullName}</h3>
-          <dl className={s.profileList}>
-            {profileList.map(([title, value], idx) => (
-              <React.Fragment key={idx}>
-                <dt>{title}</dt>
-                <dd>{makeLink(value)}</dd>
-              </React.Fragment>
-            ))}
-          </dl>
+          {Boolean(profileList.length) && (
+            <dl className={s.profileList}>
+              {profileList.map(([title, value], idx) => (
+                <React.Fragment key={idx}>
+                  <dt>{title}</dt>
+                  <dd>{makeLink(value)}</dd>
+                </React.Fragment>
+              ))}
+            </dl>
+          )}
         </div>
       </div>
     </>

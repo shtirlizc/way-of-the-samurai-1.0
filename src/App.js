@@ -20,7 +20,7 @@ const App = () => {
         <SidebarContainer />
 
         <main className="app-content">
-          <Route path="/profile" component={ProfileContainer} />
+          <Route path="/profile/:userId?" component={ProfileContainer} />
           <Route path="/dialogs" component={Dialogs} />
           <Route path="/users" component={UsersContainer} />
           <Route path="/news" component={News} />
