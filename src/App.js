@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 import Header from "./modules/Header";
 import SidebarContainer from "./modules/Sidebar/SidebarContainer";
-import Profile from "./pages/Profile";
+import ProfileContainer from "./pages/Profile/ProfileContainer";
 import Dialogs from "./pages/Dialogs";
 import UsersContainer from "./pages/Users/UsersContainer";
 import News from "./pages/News";
@@ -20,7 +20,7 @@ const App = () => {
         <SidebarContainer />
 
         <main className="app-content">
-          <Route path="/profile" component={Profile} />
+          <Route path="/profile" component={ProfileContainer} />
           <Route path="/dialogs" component={Dialogs} />
           <Route path="/users" component={UsersContainer} />
           <Route path="/news" component={News} />

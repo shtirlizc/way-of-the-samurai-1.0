@@ -6,6 +6,7 @@ import Pagination from "../../components/Pagination";
 
 import DefaultUserImage from "../../assets/images/user.png";
 import s from "./Users.module.css";
+import { Link } from "react-router-dom";
 
 const Users = (props) => {
   const { users, currentPage, totalCount, pageSize, onChangePage } = props;
@@ -31,9 +32,9 @@ const Users = (props) => {
         return (
           <div key={id} className={s.user}>
             <div className={s.userAvatar}>
-              <div className={s.userImg}>
+              <Link to={`/profile/${id}`} className={s.userImg}>
                 <img src={userImage} alt={name} />
-              </div>
+              </Link>
               <div className={s.userFollow}>
                 {followed ? (
                   <Button
@@ -54,7 +55,7 @@ const Users = (props) => {
                 )}
               </div>
             </div>
-            <div className={s.userBody}>
+            <Link to={`/profile/${id}`} className={s.userBody}>
               <div className={s.userInfo}>
                 <h3 className={s.userName}>{name}</h3>
                 {status && <p className={s.userStatus}>{status}</p>}
@@ -63,7 +64,7 @@ const Users = (props) => {
                 <p>{"location.city"}</p>
                 <p>{"location.country"}</p>
               </div>
-            </div>
+            </Link>
           </div>
         );
       })}

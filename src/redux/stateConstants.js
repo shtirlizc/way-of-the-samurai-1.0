@@ -92,6 +92,7 @@ export const profileInitialState = {
     education: "USATU",
     webSite: "shtirlizc.ru",
   },
+  profile: null,
 };
 
 export const dialogsInitialState = {
