@@ -26,7 +26,10 @@ class UsersContainer extends React.Component {
     toggleIsFetching(true);
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`
+        `https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`,
+        {
+          withCredentials: true,
+        }
       )
       .then((response) => {
         toggleIsFetching(false);
@@ -42,7 +45,10 @@ class UsersContainer extends React.Component {
     setCurrentPage(page);
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${pageSize}`
+        `https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${pageSize}`,
+        {
+          withCredentials: true,
+        }
       )
       .then((response) => {
         toggleIsFetching(false);
@@ -50,16 +56,16 @@ class UsersContainer extends React.Component {
       });
   };
 
-  onFollow = (userId) => {
-    this.props.follow(userId);
-  };
-
-  onUnfollow = (userId) => {
-    this.props.unfollow(userId);
-  };
-
   render() {
-    const { users, isFetching, currentPage, totalCount, pageSize } = this.props;
+    const {
+      users,
+      isFetching,
+      currentPage,
+      totalCount,
+      pageSize,
+      follow,
+      unfollow,
+    } = this.props;
 
     if (isFetching) {
       return <Preloader />;
@@ -72,6 +78,8 @@ class UsersContainer extends React.Component {
         totalCount={totalCount}
         pageSize={pageSize}
         onChangePage={this.onChangePage}
+        follow={follow}
+        unfollow={unfollow}
       />
     );
   }
