@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
-import Header from "./modules/Header";
+import HeaderContainer from "./modules/Header/HeaderContainer";
 import SidebarContainer from "./modules/Sidebar/SidebarContainer";
 import ProfileContainer from "./pages/Profile/ProfileContainer";
 import Dialogs from "./pages/Dialogs";
@@ -16,7 +16,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
-        <Header />
+        <HeaderContainer />
         <SidebarContainer />
 
         <main className="app-content">

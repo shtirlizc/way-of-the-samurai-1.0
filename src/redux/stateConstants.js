@@ -37,6 +37,13 @@ const friends = [
   },
 ];
 
+export const authInitialState = {
+  userId: null,
+  login: null,
+  email: null,
+  isAuth: false,
+};
+
 export const sidebarInitialState = {
   friends,
   navigation: [
