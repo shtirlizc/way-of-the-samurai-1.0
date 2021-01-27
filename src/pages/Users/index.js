@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import * as axios from "axios";
 
 import Title from "../../components/Title";
 import Button from "../../components/Button";
@@ -8,6 +7,7 @@ import Pagination from "../../components/Pagination";
 
 import DefaultUserImage from "../../assets/images/user.png";
 import s from "./Users.module.css";
+import { followAPI } from "../../api";
 
 const Users = (props) => {
   const {
@@ -56,21 +56,11 @@ const Users = (props) => {
                 {followed ? (
                   <Button
                     onClick={() => {
-                      axios
-                        .delete(
-                          `https://social-network.samuraijs.com/api/1.0/follow/${id}`,
-                          {
-                            withCredentials: true,
-                            headers: {
-                              "API-KEY": "a510e924-6cd3-421d-bf9f-35f0d5f53967",
-                            },
-                          }
-                        )
-                        .then((response) => {
-                          if (response.data.resultCode === 0) {
-                            onUnfollow(id);
-                          }
-                        });
+                      followAPI.unfollow(id).then((data) => {
+                        if (data.resultCode === 0) {
+                          onUnfollow(id);
+                        }
+                      });
                     }}
                   >
                     Unfollow
@@ -78,22 +68,11 @@ const Users = (props) => {
                 ) : (
                   <Button
                     onClick={() => {
-                      axios
-                        .post(
-                          `https://social-network.samuraijs.com/api/1.0/follow/${id}`,
-                          null,
-                          {
-                            withCredentials: true,
-                            headers: {
-                              "API-KEY": "a510e924-6cd3-421d-bf9f-35f0d5f53967",
-                            },
-                          }
-                        )
-                        .then((response) => {
-                          if (response.data.resultCode === 0) {
-                            onFollow(id);
-                          }
-                        });
+                      followAPI.follow(id).then((data) => {
+                        if (data.resultCode === 0) {
+                          onFollow(id);
+                        }
+                      });
                     }}
                   >
                     Follow
