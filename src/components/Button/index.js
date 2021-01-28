@@ -4,7 +4,15 @@ import classNames from "classnames";
 import s from "./Button.module.css";
 
 const Button = (props) => {
-  const { children, fullWidth, active, className, type, onClick } = props;
+  const {
+    children,
+    fullWidth,
+    active,
+    className,
+    type,
+    disabled = false,
+    onClick,
+  } = props;
 
   return (
     <button
@@ -15,6 +23,7 @@ const Button = (props) => {
         active && s.active
       )}
       type={type}
+      disabled={disabled}
       onClick={onClick}
     >
       {children}

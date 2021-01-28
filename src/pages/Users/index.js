@@ -18,6 +18,8 @@ const Users = (props) => {
     onChangePage,
     follow,
     unfollow,
+    inFollowingProcess,
+    toggleIsFollowing,
   } = props;
 
   const onFollow = (userId) => {
@@ -26,6 +28,10 @@ const Users = (props) => {
 
   const onUnfollow = (userId) => {
     unfollow(userId);
+  };
+
+  const toggleFollowButton = (isFollowing, userId) => {
+    toggleIsFollowing(isFollowing, userId);
   };
 
   const showPagination = () => (
@@ -55,10 +61,15 @@ const Users = (props) => {
               <div className={s.userFollow}>
                 {followed ? (
                   <Button
+                    disabled={inFollowingProcess.some(
+                      (userId) => userId === id
+                    )}
                     onClick={() => {
+                      toggleFollowButton(true, id);
                       followAPI.unfollow(id).then((data) => {
                         if (data.resultCode === 0) {
                           onUnfollow(id);
+                          toggleFollowButton(false, id);
                         }
                       });
                     }}
@@ -67,10 +78,15 @@ const Users = (props) => {
                   </Button>
                 ) : (
                   <Button
+                    disabled={inFollowingProcess.some(
+                      (userId) => userId === id
+                    )}
                     onClick={() => {
+                      toggleFollowButton(true, id);
                       followAPI.follow(id).then((data) => {
                         if (data.resultCode === 0) {
                           onFollow(id);
+                          toggleFollowButton(false, id);
                         }
                       });
                     }}

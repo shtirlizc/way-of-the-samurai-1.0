@@ -62,6 +62,7 @@ export const usersInitialState = {
   pageSize: 100,
   totalCount: 0,
   isFetching: false,
+  inFollowingProcess: [],
 };
 
 export const profileInitialState = {

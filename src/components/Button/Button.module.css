@@ -10,7 +10,7 @@
   font-size: 16px;
   color: white;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .root:hover {
@@ -24,4 +24,14 @@
 .active {
   background-color: orange;
   pointer-events: none;
+}
+
+.root:disabled {
+  cursor: default;
+  filter: grayscale(100%);
+  opacity: 0.9;
+}
+
+.root:disabled:hover {
+  background-color: tomato;
 }
