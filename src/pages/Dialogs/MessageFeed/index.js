@@ -5,7 +5,7 @@ import Message from "./Message";
 import s from "./MessageFeed.module.css";
 
 const MessageFeed = (props) => {
-  const { messages, newMessage, addMessage, changeNewMessage } = props;
+  const { messages, newMessage, addMessage, changeMessage } = props;
 
   const messagesElements = messages.map(({ id, message, isMineMessage }) => (
     <Message key={id} message={message} isMe={isMineMessage} />
@@ -17,7 +17,7 @@ const MessageFeed = (props) => {
   };
 
   const onChangeNewMessage = (evt) => {
-    changeNewMessage(evt.target.value);
+    changeMessage(evt.target.value);
   };
 
   return (
