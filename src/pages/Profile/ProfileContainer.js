@@ -6,18 +6,15 @@ import Profile from "./index";
 import {
   addPost,
   changePost,
-  setUserProfile,
+  getProfile,
 } from "../../redux/reducers/profileReducer";
-import { profileAPI } from "../../api";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
     let { userId } = this.props.match.params;
     if (!userId) userId = 2;
 
-    profileAPI.getProfile(userId).then((data) => {
-      this.props.setUserProfile(data);
-    });
+    this.props.getProfile(userId);
   }
 
   render() {
@@ -32,7 +29,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  setUserProfile,
   addPost,
   changePost,
+  getProfile,
 })(withRouter(ProfileContainer));
