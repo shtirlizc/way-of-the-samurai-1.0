@@ -7,7 +7,6 @@ import Pagination from "../../components/Pagination";
 
 import DefaultUserImage from "../../assets/images/user.png";
 import s from "./Users.module.css";
-import { followAPI } from "../../api";
 
 const Users = (props) => {
   const {
@@ -19,19 +18,10 @@ const Users = (props) => {
     follow,
     unfollow,
     inFollowingProcess,
-    toggleIsFollowing,
   } = props;
 
-  const onFollow = (userId) => {
-    follow(userId);
-  };
-
-  const onUnfollow = (userId) => {
-    unfollow(userId);
-  };
-
-  const toggleFollowButton = (isFollowing, userId) => {
-    toggleIsFollowing(isFollowing, userId);
+  const isFollowingProcess = (id) => {
+    return inFollowingProcess.some((userId) => userId === id);
   };
 
   const showPagination = () => (
@@ -61,34 +51,18 @@ const Users = (props) => {
               <div className={s.userFollow}>
                 {followed ? (
                   <Button
-                    disabled={inFollowingProcess.some(
-                      (userId) => userId === id
-                    )}
+                    disabled={isFollowingProcess(id)}
                     onClick={() => {
-                      toggleFollowButton(true, id);
-                      followAPI.unfollow(id).then((data) => {
-                        if (data.resultCode === 0) {
-                          onUnfollow(id);
-                          toggleFollowButton(false, id);
-                        }
-                      });
+                      unfollow(id);
                     }}
                   >
                     Unfollow
                   </Button>
                 ) : (
                   <Button
-                    disabled={inFollowingProcess.some(
-                      (userId) => userId === id
-                    )}
+                    disabled={isFollowingProcess(id)}
                     onClick={() => {
-                      toggleFollowButton(true, id);
-                      followAPI.follow(id).then((data) => {
-                        if (data.resultCode === 0) {
-                          onFollow(id);
-                          toggleFollowButton(false, id);
-                        }
-                      });
+                      follow(id);
                     }}
                   >
                     Follow

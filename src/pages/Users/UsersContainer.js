@@ -1,48 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import {
-  setUsers,
-  follow,
-  unfollow,
-  setTotalPages,
-  setCurrentPage,
-  toggleIsFetching,
-  toggleIsFollowing,
-} from "../../redux/reducers/usersReducer";
+import { follow, unfollow, getUsers } from "../../redux/reducers/usersReducer";
 import Users from "./index";
 import Preloader from "../../components/Preloader";
-import { usersAPI } from "../../api";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    const {
-      currentPage,
-      pageSize,
-      toggleIsFetching,
-      setUsers,
-      setTotalPages,
-    } = this.props;
+    const { currentPage, pageSize, getUsers } = this.props;
 
-    toggleIsFetching(true);
-
-    usersAPI.getUsers(currentPage, pageSize).then((data) => {
-      toggleIsFetching(false);
-      setUsers(data.items);
-      setTotalPages(data.totalCount);
-    });
+    getUsers(currentPage, pageSize);
   }
 
   onChangePage = (page) => {
-    const { pageSize, toggleIsFetching, setCurrentPage, setUsers } = this.props;
+    const { pageSize, getUsers } = this.props;
 
-    toggleIsFetching(true);
-    setCurrentPage(page);
-
-    usersAPI.getUsers(page, pageSize).then((data) => {
-      toggleIsFetching(false);
-      setUsers(data.items);
-    });
+    getUsers(page, pageSize);
   };
 
   render() {
@@ -55,7 +28,6 @@ class UsersContainer extends React.Component {
       follow,
       unfollow,
       inFollowingProcess,
-      toggleIsFollowing,
     } = this.props;
 
     if (isFetching) {
@@ -72,7 +44,6 @@ class UsersContainer extends React.Component {
         follow={follow}
         unfollow={unfollow}
         inFollowingProcess={inFollowingProcess}
-        toggleIsFollowing={toggleIsFollowing}
       />
     );
   }
@@ -88,11 +59,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  setUsers,
   follow,
   unfollow,
-  setTotalPages,
-  setCurrentPage,
-  toggleIsFetching,
-  toggleIsFollowing,
+  getUsers,
 })(UsersContainer);
