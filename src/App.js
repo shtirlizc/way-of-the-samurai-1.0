@@ -9,6 +9,7 @@ import UsersContainer from "./pages/Users/UsersContainer";
 import News from "./pages/News";
 import Music from "./pages/Music";
 import Settings from "./pages/Settings";
+import Login from "./pages/Login";
 
 import "./App.css";
 
@@ -20,12 +21,14 @@ const App = () => {
         <SidebarContainer />
 
         <main className="app-content">
-          <Route path="/profile/:userId?" component={ProfileContainer} />
-          <Route path="/dialogs" component={Dialogs} />
-          <Route path="/users" component={UsersContainer} />
-          <Route path="/news" component={News} />
-          <Route path="/music" component={Music} />
-          <Route path="/settings" component={Settings} />
+          <Route exact path="/" component={Login} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/profile/:userId?" component={ProfileContainer} />
+          <Route exact path="/dialogs" component={Dialogs} />
+          <Route exact path="/users" component={UsersContainer} />
+          <Route exact path="/news" component={News} />
+          <Route exact path="/music" component={Music} />
+          <Route exact path="/settings" component={Settings} />
         </main>
       </div>
     </BrowserRouter>

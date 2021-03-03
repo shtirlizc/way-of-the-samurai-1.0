@@ -5,6 +5,7 @@ const mapStateToProps = (state) => {
   return {
     navigation: state.sidebar.navigation,
     friends: state.sidebar.friends,
+    isAuth: state.auth.isAuth,
   };
 };
 

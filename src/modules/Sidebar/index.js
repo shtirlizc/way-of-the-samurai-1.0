@@ -4,11 +4,15 @@ import Friend from "./Friend";
 import s from "./Sidebar.module.css";
 
 const Sidebar = (props) => {
-  const { navigation, friends } = props;
+  const { navigation, friends, isAuth } = props;
 
-  const navigationElements = navigation.map(({ id, link, text }) => (
-    <PageLink key={id} id={id} link={link} text={text} />
-  ));
+  const navigationElements = navigation
+    .filter(({ withoutAuth }) => {
+      return withoutAuth || isAuth;
+    })
+    .map(({ id, link, text }) => (
+      <PageLink key={id} id={id} link={link} text={text} />
+    ));
   const friendsElements = friends.map(({ id, name, avatar }) => (
     <Friend key={id} name={name} avatar={avatar} />
   ));

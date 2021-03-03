@@ -8,6 +8,7 @@ import {
   changePost,
   getProfile,
 } from "../../redux/reducers/profileReducer";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -28,8 +29,10 @@ const mapStateToProps = (state) => ({
   currentPost: state.profilePage.currentPost,
 });
 
+const AuthRedirectProfile = withAuthRedirect(ProfileContainer);
+
 export default connect(mapStateToProps, {
   addPost,
   changePost,
   getProfile,
-})(withRouter(ProfileContainer));
+})(withRouter(AuthRedirectProfile));

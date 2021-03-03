@@ -47,12 +47,12 @@ export const authInitialState = {
 export const sidebarInitialState = {
   friends,
   navigation: [
-    { id: 1, link: "profile", text: "Profile" },
-    { id: 2, link: "dialogs", text: "Messages" },
-    { id: 3, link: "users", text: "Users" },
-    { id: 4, link: "news", text: "News" },
-    { id: 5, link: "music", text: "Music" },
-    { id: 6, link: "settings", text: "Settings" },
+    { id: 1, link: "profile", text: "Profile", withoutAuth: false },
+    { id: 2, link: "dialogs", text: "Messages", withoutAuth: false },
+    { id: 3, link: "users", text: "Users", withoutAuth: false },
+    { id: 4, link: "news", text: "News", withoutAuth: true },
+    { id: 5, link: "music", text: "Music", withoutAuth: true },
+    { id: 6, link: "settings", text: "Settings", withoutAuth: true },
   ],
 };
 
