@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { compose } from "redux";
 
 import Profile from "./index";
 import {
@@ -29,10 +30,12 @@ const mapStateToProps = (state) => ({
   currentPost: state.profilePage.currentPost,
 });
 
-const AuthRedirectProfile = withAuthRedirect(ProfileContainer);
-
-export default connect(mapStateToProps, {
-  addPost,
-  changePost,
-  getProfile,
-})(withRouter(AuthRedirectProfile));
+export default compose(
+  connect(mapStateToProps, {
+    addPost,
+    changePost,
+    getProfile,
+  }),
+  withRouter,
+  withAuthRedirect
+)(ProfileContainer);

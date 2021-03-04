@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import { compose } from "redux";
 
 import { follow, unfollow, getUsers } from "../../redux/reducers/usersReducer";
 import Users from "./index";
@@ -66,10 +67,11 @@ const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
 });
 
-const AuthRedirectUsers = withAuthRedirect(UsersContainer);
-
-export default connect(mapStateToProps, {
-  follow,
-  unfollow,
-  getUsers,
-})(AuthRedirectUsers);
+export default compose(
+  connect(mapStateToProps, {
+    follow,
+    unfollow,
+    getUsers,
+  }),
+  withAuthRedirect
+)(UsersContainer);
