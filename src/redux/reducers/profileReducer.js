@@ -46,11 +46,11 @@ export const changePost = (value) => ({
   type: CHANGE_POST,
   value,
 });
+
 export const setUserProfile = (profile) => ({
   type: SET_USER_PROFILE,
   profile,
 });
-
 export const getProfile = (userId) => {
   return (dispatch) => {
     profileAPI.getProfile(userId).then((data) => {

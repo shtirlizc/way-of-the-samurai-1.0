@@ -76,9 +76,6 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
-export const setUsers = (users) => ({ type: SET_USERS, users });
-export const followSuccess = (userId) => ({ type: FOLLOW, userId });
-export const unfollowSuccess = (userId) => ({ type: UNFOLLOW, userId });
 export const setTotalPages = (totalPages) => ({
   type: SET_TOTAL_PAGES,
   totalPages,
@@ -97,6 +94,7 @@ export const toggleIsFollowing = (isFollowing, userId) => ({
   userId,
 });
 
+export const setUsers = (users) => ({ type: SET_USERS, users });
 export const getUsers = (currentPage, pageSize) => {
   return (dispatch) => {
     dispatch(toggleIsFetching(true));
@@ -109,6 +107,8 @@ export const getUsers = (currentPage, pageSize) => {
     });
   };
 };
+
+export const followSuccess = (userId) => ({ type: FOLLOW, userId });
 export const follow = (userId) => {
   return (dispatch) => {
     dispatch(toggleIsFollowing(true, userId));
@@ -121,6 +121,8 @@ export const follow = (userId) => {
     });
   };
 };
+
+export const unfollowSuccess = (userId) => ({ type: UNFOLLOW, userId });
 export const unfollow = (userId) => {
   return (dispatch) => {
     dispatch(toggleIsFollowing(true, userId));

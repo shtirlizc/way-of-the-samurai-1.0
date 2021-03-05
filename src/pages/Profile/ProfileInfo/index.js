@@ -1,5 +1,6 @@
 import React from "react";
 import Preloader from "../../../components/Preloader";
+import ProfileStatus from "./ProfileStatus";
 
 import s from "./ProfileInfo.module.css";
 
@@ -50,6 +51,10 @@ const ProfileInfo = (props) => {
 
         <div className={s.profileDesc}>
           <h3 className={s.profileName}>{fullName}</h3>
+
+          <div className={s.profileStatus}>
+            <ProfileStatus />
+          </div>
           {Boolean(profileList.length) && (
             <dl className={s.profileList}>
               {profileList.map(([title, value], idx) => (
