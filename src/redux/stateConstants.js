@@ -90,6 +90,7 @@ export const profileInitialState = {
     },
   ],
   profile: null,
+  status: "",
 };
 
 export const dialogsInitialState = {

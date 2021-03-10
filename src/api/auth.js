@@ -1,6 +1,6 @@
 import instance from "./instance";
 
-export default {
+export const authAPI = {
   authMe() {
     return instance.get("auth/me").then((response) => response.data);
   },

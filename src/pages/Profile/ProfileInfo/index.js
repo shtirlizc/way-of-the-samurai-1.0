@@ -5,7 +5,7 @@ import ProfileStatus from "./ProfileStatus";
 import s from "./ProfileInfo.module.css";
 
 const ProfileInfo = (props) => {
-  const { profile } = props;
+  const { profile, status, updateUserStatus } = props;
 
   if (!profile) {
     return <Preloader />;
@@ -53,7 +53,10 @@ const ProfileInfo = (props) => {
           <h3 className={s.profileName}>{fullName}</h3>
 
           <div className={s.profileStatus}>
-            <ProfileStatus />
+            <ProfileStatus
+              status={status}
+              updateUserStatus={updateUserStatus}
+            />
           </div>
           {Boolean(profileList.length) && (
             <dl className={s.profileList}>

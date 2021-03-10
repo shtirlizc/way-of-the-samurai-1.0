@@ -1,6 +1,6 @@
 import instance from "./instance";
 
-export default {
+export const followAPI = {
   follow(userId) {
     return instance.post(`follow/${userId}`).then((response) => response.data);
   },
