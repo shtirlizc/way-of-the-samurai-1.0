@@ -1,8 +1,7 @@
 import React from "react";
-import Textarea from "../../../components/TextField/Textarea";
-import Button from "../../../components/Button";
+
 import Message from "./Message";
-import s from "./MessageFeed.module.css";
+import Form from "./Form";
 
 const MessageFeed = (props) => {
   const { messages, newMessage, addMessage, changeMessage } = props;
@@ -11,30 +10,23 @@ const MessageFeed = (props) => {
     <Message key={id} message={message} isMe={isMineMessage} />
   ));
 
-  const onAddMessage = (evt) => {
-    evt.preventDefault();
-    addMessage();
-  };
-
   const onChangeNewMessage = (evt) => {
     changeMessage(evt.target.value);
   };
 
+  const onSubmit = () => {
+    addMessage();
+  };
+
   return (
-    <div className={s.root}>
+    <div>
       {messagesElements}
 
-      <form action="" className={s.newMessage} onSubmit={onAddMessage}>
-        <Textarea
-          value={newMessage}
-          onChange={onChangeNewMessage}
-          placeholder="Type message..."
-          required
-        />
-        <Button type="submit" className={s.sendMessage}>
-          Send
-        </Button>
-      </form>
+      <Form
+        newMessage={newMessage}
+        onChangeNewMessage={onChangeNewMessage}
+        onSubmit={onSubmit}
+      />
     </div>
   );
 };

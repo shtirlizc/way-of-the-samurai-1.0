@@ -1,7 +1,8 @@
 import React from "react";
+
 import Post from "./Post";
-import Textarea from "../../../components/TextField/Textarea";
-import Button from "../../../components/Button";
+import Form from "./Form";
+
 import s from "./MyPosts.module.css";
 
 const MyPosts = (props) => {
@@ -11,29 +12,18 @@ const MyPosts = (props) => {
   ));
   postsElements.reverse();
 
-  const onAddPost = (evt) => {
-    evt.preventDefault();
+  const onSubmit = () => {
     addPost();
-  };
-
-  const onChangePost = (evt) => {
-    changePost(evt.target.value);
   };
 
   return (
     <div className={s.posts}>
       <div className={s.postsNew}>
-        <form action="" className={s.form} onSubmit={onAddPost}>
-          <Textarea
-            placeholder="Your news..."
-            required
-            value={currentPost}
-            onChange={onChangePost}
-          />
-          <Button type="submit" className={s.sendPost}>
-            Send
-          </Button>
-        </form>
+        <Form
+          currentPost={currentPost}
+          changePost={changePost}
+          onSubmit={onSubmit}
+        />
       </div>
       <h3 className={s.postsTitle}>My posts</h3>
       <div className={s.postsFeed}>{postsElements}</div>
