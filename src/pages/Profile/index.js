@@ -3,15 +3,7 @@ import ProfileInfo from "./ProfileInfo";
 import MyPosts from "./MyPosts";
 
 const Profile = (props) => {
-  const {
-    profile,
-    status,
-    currentPost,
-    posts,
-    addPost,
-    changePost,
-    updateUserStatus,
-  } = props;
+  const { profile, status, posts, addPost, updateUserStatus } = props;
 
   return (
     <>
@@ -20,12 +12,7 @@ const Profile = (props) => {
         status={status}
         updateUserStatus={updateUserStatus}
       />
-      <MyPosts
-        currentPost={currentPost}
-        posts={posts}
-        changePost={changePost}
-        addPost={addPost}
-      />
+      <MyPosts posts={posts} addPost={addPost} />
     </>
   );
 };

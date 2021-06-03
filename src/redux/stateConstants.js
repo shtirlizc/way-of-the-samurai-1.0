@@ -66,7 +66,6 @@ export const usersInitialState = {
 };
 
 export const profileInitialState = {
-  currentPost: "",
   posts: [
     {
       id: 1,
@@ -117,5 +116,4 @@ export const dialogsInitialState = {
       isMineMessage: true,
     },
   ],
-  newMessage: "",
 };

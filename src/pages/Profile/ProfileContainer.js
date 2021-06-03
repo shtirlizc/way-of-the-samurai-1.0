@@ -6,7 +6,6 @@ import { compose } from "redux";
 import Profile from "./index";
 import {
   addPost,
-  changePost,
   getProfile,
   getUserStatus,
   updateUserStatus,
@@ -31,13 +30,11 @@ const mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
   status: state.profilePage.status,
   posts: state.profilePage.posts,
-  currentPost: state.profilePage.currentPost,
 });
 
 export default compose(
   connect(mapStateToProps, {
     addPost,
-    changePost,
     getProfile,
     getUserStatus,
     updateUserStatus,

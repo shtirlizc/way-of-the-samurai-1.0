@@ -1,13 +1,12 @@
 import { profileInitialState as initialState } from "../stateConstants";
 import { profileAPI } from "../../api";
 
-const CHANGE_POST = "CHANGE-POST";
 const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET-USER-PROFILE";
 const SET_USER_STATUS = "SET-USER-STATUS";
 
 const profileReducer = (state = initialState, action) => {
-  const { type, value } = action;
+  const { type } = action;
 
   switch (type) {
     case SET_USER_PROFILE:
@@ -22,22 +21,14 @@ const profileReducer = (state = initialState, action) => {
         status: action.status,
       };
 
-    case CHANGE_POST:
-      return {
-        ...state,
-        currentPost: value,
-      };
-
     case ADD_POST:
-      const currentPost = state.currentPost;
       return {
         ...state,
-        currentPost: "",
         posts: [
           ...state.posts,
           {
             id: 5,
-            message: currentPost,
+            message: action.newPost,
             likesCount: 0,
           },
         ],
@@ -48,11 +39,7 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 
-export const addPost = () => ({ type: ADD_POST });
-export const changePost = (value) => ({
-  type: CHANGE_POST,
-  value,
-});
+export const addPost = (newPost) => ({ type: ADD_POST, newPost });
 
 export const setUserProfile = (profile) => ({
   type: SET_USER_PROFILE,

@@ -1,28 +1,19 @@
 import { dialogsInitialState as initialState } from "../stateConstants";
 
-const CHANGE_MESSAGE = "CHANGE-MESSAGE";
 const ADD_MESSAGE = "ADD-MESSAGE";
 
 const dialogsReducer = (state = initialState, action) => {
   const { type, value } = action;
 
   switch (type) {
-    case CHANGE_MESSAGE:
-      return {
-        ...state,
-        newMessage: value,
-      };
-
     case ADD_MESSAGE:
-      const newMessage = state.newMessage;
       return {
         ...state,
-        newMessage: "",
         messages: [
           ...state.messages,
           {
             id: 5,
-            message: newMessage,
+            message: action.newMessage,
             isMineMessage: true,
           },
         ],
@@ -33,10 +24,6 @@ const dialogsReducer = (state = initialState, action) => {
   }
 };
 
-export const addMessage = () => ({ type: ADD_MESSAGE });
-export const changeMessage = (value) => ({
-  type: CHANGE_MESSAGE,
-  value,
-});
+export const addMessage = (newMessage) => ({ type: ADD_MESSAGE, newMessage });
 
 export default dialogsReducer;

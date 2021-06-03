@@ -5,26 +5,19 @@ import { Field, reduxForm } from "redux-form";
 import Button from "../../../../components/Button";
 
 import s from "./Form.module.css";
-
 import inputStyles from "../../../../components/TextField/TextField.module.css";
 
 const Form = (props) => {
-  const { currentPost, changePost } = props;
-
-  const onChangePost = (evt) => {
-    changePost(evt.target.value);
-  };
+  const { handleSubmit } = props;
 
   return (
-    <form className={s.root} onSubmit={props.handleSubmit}>
+    <form className={s.root} onSubmit={handleSubmit}>
       <Field
         component="textarea"
         type="text"
-        name="new-post"
+        name="newPost"
         placeholder="Your news..."
         className={classNames(inputStyles.root, inputStyles.textarea)}
-        value={currentPost}
-        onChange={onChangePost}
       />
       <Button type="submit" className={s.sendPost}>
         Send
