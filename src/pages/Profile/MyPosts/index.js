@@ -1,6 +1,6 @@
 import React from "react";
 import Post from "./Post";
-import Textarea from "../../../components/Textarea";
+import Textarea from "../../../components/TextField/Textarea";
 import Button from "../../../components/Button";
 import s from "./MyPosts.module.css";
 

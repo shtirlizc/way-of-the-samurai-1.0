@@ -1,0 +1,46 @@
+.root input {
+  display: none;
+}
+
+.root input + label {
+  position: relative;
+  font-size: 14px;
+  line-height: 1.2em;
+  color: #333333;
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  padding-left: 24px;
+}
+
+.root input + label::before,
+.root input + label::after {
+  content: "";
+  position: absolute;
+}
+
+.root input + label::before {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  top: 0;
+  left: 0;
+  border: 1px solid #ddd;
+  background-color: #eee;
+}
+
+.root input + label::after {
+  border: 2px solid #555555;
+  border-top-style: none;
+  border-right-style: none;
+  width: 12px;
+  height: 6px;
+  top: 3px;
+  left: 2px;
+  transform: rotate(-45deg) scale(0);
+  transition: transform 0.25s ease-in-out;
+}
+
+.root input:checked + label::after {
+  transform: rotate(-45deg) scale(1);
+}

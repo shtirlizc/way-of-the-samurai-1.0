@@ -1,5 +1,5 @@
 import React from "react";
-import Textarea from "../../../components/Textarea";
+import Textarea from "../../../components/TextField/Textarea";
 import Button from "../../../components/Button";
 import Message from "./Message";
 import s from "./MessageFeed.module.css";
